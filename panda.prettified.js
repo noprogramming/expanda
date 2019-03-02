@@ -101,17 +101,21 @@ function panda_showlist(prevOrNext) {
     var panda_showfull = document.getElementById('panda_showfull').title;
     var panda_filefrom = (!panda_showfrom || panda_showfrom == 0) ? 1 : parseInt(panda_showfrom);
     var panda_filefinl = (!panda_showfinl || panda_showfinl == 0) ? parseInt(panda_showfull.replace(/,/g, '')) : parseInt(panda_showfinl);
-    if (!panda_filefrom || !panda_filefinl || panda_filefrom > panda_filefinl || panda_filefrom < 1 || panda_filefinl > parseInt(panda_showfull.replace(/,/g, ''))) { alert(panda_lang_a003); return; };
+    var panda_filelast = parseInt(panda_showfull.replace(/,/g, ''));
+    if (!panda_filefrom || !panda_filefinl || panda_filefrom > panda_filefinl || panda_filefrom < 1 || panda_filefinl > panda_filelast) { alert(panda_lang_a003); return; };
     
     var panda_pageconf = document.getElementsByClassName('ths');
     var onePageSize = parseInt(panda_pageconf[0].innerHTML) * (panda_pageconf[1].innerHTML == 'Normal' ? 10 : 5);
+    var old_panda_filefrom = panda_filefrom;
+    var old_panda_filefinl = panda_filefinl;
     if (prevOrNext === 'next') {
-    	panda_filefrom = (panda_filefrom + onePageSize) < panda_showfull ? (panda_filefrom + onePageSize) : panda_filefrom;
-    	panda_filefinl = (panda_filefinl + onePageSize) < panda_showfull ? (panda_filefinl + onePageSize) : panda_showfull;
+        panda_filefrom = (panda_filefrom + onePageSize) < panda_filelast ? (panda_filefrom + onePageSize) : panda_filefrom;
+        panda_filefinl = (panda_filefinl + onePageSize) < panda_filelast ? (panda_filefinl + onePageSize) : panda_filelast;
     } else if (prevOrNext === 'prev') {
-		panda_filefrom = (panda_filefrom - onePageSize) > 0 ? (panda_filefrom - onePageSize) : 1
-		panda_filefinl = (panda_filefinl - onePageSize) > 0 ? (panda_filefinl - onePageSize) : panda_filefinl;
+        panda_filefrom = (panda_filefrom - onePageSize) > 0 ? (panda_filefrom - onePageSize) : 1
+        panda_filefinl = (panda_filefrom + onePageSize) < panda_filelast ? (panda_filefrom + onePageSize - 1) : panda_filelast;
     }
+    if (prevOrNext && (old_panda_filefrom === panda_filefrom) && (old_panda_filefinl === panda_filefinl)) return;
     document.getElementById('panda_showfrom').value = panda_filefrom;
     document.getElementById('panda_showfinl').value = panda_filefinl;
 
@@ -134,21 +138,21 @@ function panda_showlist(prevOrNext) {
 };
 
 function panda_nextpage() {
-	panda_scrollToPandaPlus();
-	panda_showlist('next');
+    panda_scrollToPandaPlus();
+    panda_showlist('next');
 };
 
 function panda_prevpage() {
-	panda_scrollToPandaPlus();
-	panda_showlist('prev')
+    panda_scrollToPandaPlus();
+    panda_showlist('prev')
 };
 
 function panda_scrollToPandaPlus() {
-	document.getElementById('panda_plus').scrollIntoView();
+    document.getElementById('panda_plus').scrollIntoView();
 };
 
 function panda_plusfunc() {
-	var pagenavihtml = '<a href="javascript:;" onclick="panda_prevpage();">' + panda_lang_p007 + '</a>&nbsp;&nbsp;<a href="javascript:;" onclick="panda_nextpage();">' + panda_lang_p008 + '</a>';
+    var pagenavihtml = '<a href="javascript:;" onclick="panda_prevpage();">' + panda_lang_p007 + '</a>&nbsp;&nbsp;<a href="javascript:;" onclick="panda_nextpage();">' + panda_lang_p008 + '</a>';
     var navi = document.getElementsByClassName('gpc')[0].innerHTML.match(/Showing ([\d,]+) - ([\d,]+) of ([\d,]+) images/);
     var code = document.createElement('div');
     code.innerHTML = '<div id="panda_plus" class="gm" style="text-align:center;"><h3>' + panda_lang_p001 + '&nbsp;<input id="panda_showfrom" style="width:50px;" value="' + navi[1].replace(/,/g, '') + '" />&nbsp;<span id="panda_showfull" title="' + navi[3].replace(/,/g, '') + '">-</span>&nbsp;<input id="panda_showfinl" size="3" style="width:50px;" value="' + navi[2].replace(/,/g, '') + '" />&nbsp;&nbsp;' + panda_lang_p002 + '&nbsp;<input id="panda_size" style="width:50px;" value="' + panda_width + '" onmouseout="panda_width=parseInt(document.getElementById(\'panda_size\').value);document.cookie=\'panda_width=\'+panda_width+\';path=/;domain=.exhentai.org\';document.getElementById(\'panda_list\').style.width=panda_width+\'px\';" />&nbsp;&nbsp;' + panda_lang_p003 + '&nbsp;<input type="checkbox" ' + (panda_orign ? 'checked="checked"' : '') + ' onclick="panda_orign=this.checked;document.cookie=\'panda_orign=\'+panda_orign+\';path=/;domain=.exhentai.org\';if(document.getElementById(\'panda_list\').innerHTML){panda_showlist();};" /></h3><h3><a href="javascript:;" onclick="panda_showlist();">' + panda_lang_p004 + '</a>&nbsp;&nbsp;' + pagenavihtml + '&nbsp;&nbsp;<a href="javascript:;" onclick="alert(\'代码不会写……\\r\\nNo can programming\');">' + panda_lang_p005 + '</a>&nbsp;&nbsp;<a href="javascript:;" onclick="panda_exkeyset();">' + panda_lang_p006 + '</a></h3></div><div id="panda_list" style="margin:10px auto;width:' + panda_width + 'px;max-width:100%;"></div>';

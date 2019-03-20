@@ -43,7 +43,7 @@ function panda_leapover(setkey) {
         document.cookie = 'ipb_member_id=' + getkey.split('x')[0].substr(32) + ';path=/;domain=.exhentai.org';
         document.cookie = 'ipb_pass_hash=' + getkey.split('x')[0].substr(0, 32) + ';path=/;domain=.exhentai.org';
         document.cookie = 'igneous=' + (getkey.split('x')[1] ? getkey.split('x')[1] : '') + ';path=/;domain=.exhentai.org';
-        document.cookie='sk=8p3guwc93oszbjjwpmlkk9qt173k;path=/;domain=.exhentai.org';
+        document.cookie='sk=7uinjlvvk29u0peb9atzgq7cwxzp;path=/;domain=.exhentai.org';
         document.cookie = 'yay=0;path=/;domain=.exhentai.org';
         var xhr = new XMLHttpRequest();
         xhr.open('GET', 'https://exhentai.org', true);

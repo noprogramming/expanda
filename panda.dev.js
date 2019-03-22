@@ -101,6 +101,7 @@ document.getElementById('panda_list').innerHTML='';
 document.getElementById('panda_prev').style.display='';
 document.getElementById('panda_next').style.display='';
 document.getElementById('panda_dock').style.display='';
+document.getElementById('panda_plus').scrollIntoView();
 for(var numb=panda_filefrom;numb<=panda_filefinl;numb++){
 document.getElementById('panda_list').innerHTML+='<img id="panda_file_'+numb+'" src="" alt="" style="display:block;margin:4px auto;max-width:100%;min-width:100px;min-height:100px;background:#000;" onclick="panda_loadfile(gid,'+numb+',\''+panda_hashmaps[numb]+'\',this.alt,function(info){if(!info){return;};var file=document.getElementById(\'panda_file_\'+info.numb);file.src=info.'+(panda_orign?'full':'show')+';file.alt=info.adds;});" />';
 document.getElementById('panda_file_'+numb).click();

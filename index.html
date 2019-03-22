@@ -37,18 +37,18 @@ window.location.hash=exkey;
 func(exkey);
 };
 function bookmarkshow(){
-exkeyget('bookmark',function(exkey){
+exkeyget('public',function(exkey){
 var code="javascript:(function(){var a=document.createElement('script');a.setAttribute('src','//"+window.location.hostname+window.location.pathname.substring(0,window.location.pathname.lastIndexOf('/'))+"/panda.js?'+Date.parse(new Date()));"+(document.getElementById('exkey').value?"a.setAttribute('exkey','"+exkey+"');":"")+"document.body.appendChild(a);}());";
 document.getElementById('bookmark').innerHTML='<a href="'+code+'"><b>[panda]</b></a><br /><input value="'+code+'" /><br />1.PC浏览器请直接将按钮“[panda]”拖入书签栏。<br />2.IOS请复制代码，将本页添加书签。点击地址栏，长按书签图标编辑，粘贴代码替换网址。<br />3.Android请使用<a href="https://www.mozilla.org/firefox" target="_blank"><u>Firefox</u></a>，长按按钮“[panda]”，将链接加入书签。<br />4.在任意网址（非空白页）运行书签，点击确定跳转至图标页，然后再次运行书签即可解锁。<br />5.在专辑页面运行书签可开启扩展功能面板。<br />';
 });
 };
 function tpmonkeyshow(){
-exkeyget('bookmark',function(exkey){
+exkeyget('public',function(exkey){
 document.getElementById('tpmonkey').innerHTML='1.安装插件：<a href="https://tampermonkey.net/?locale=zh" target="_blank"><u>Tampermonkey</u></a>（<a href="https://www.crx4chrome.com/crx/755/" target="_blank"><u>Chrome大陆镜像</u></a>）<br />2.启用脚本：<a href="'+serv+(document.getElementById('exkey').value?(exkey+'.'):'')+'panda.user.js" target="_blank"><u>panda.user.js</u></a><br />3.解锁里站：<a href="http://c.exhentai.org" target="_blank"><u>c.exhentai.org</u></a>（大陆无法打开里站，故用此地址做跳板）<br />';
 });
 };
 function unlockershow(){
-exkeyget('unlocker',function(exkey){
+exkeyget('private',function(exkey){
 window.location.href=serv+exkey+'.panda.unlock';
 });
 };

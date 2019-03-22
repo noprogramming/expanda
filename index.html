@@ -27,7 +27,7 @@ xhr.setRequestHeader('Content-Type','x-www-form-urlencoded');
 xhr.responseType='text';
 xhr.onreadystatechange=function(e){if(xhr.readyState===4 && xhr.status===200){
 exkey=xhr.responseText.replace(/[\r\n]/g,'');
-if(!exkey){alert('公用账号失效');return;};
+if(!exkey){alert('公共账号失效');return;};
 func(exkey);
 }};
 xhr.send(null);return;
@@ -56,9 +56,6 @@ window.location.href=serv+exkey+'.panda.unlock';
 <b>【熊猫书签】</b><br />
 感谢使用熊猫书签，这篇向导很长，请耐心看完。<br />
 <a href="javascript:;" onclick="window.scrollTo(0,document.getElementById('apply').offsetTop-14);"><b>点击这里跳过说明，前往应用创建部分！</b></a><br />
-<br />
-<b>【重要公告】</b><br />
-2019/03/19：<a href="https://github.com/21126881/panda/issues/3" target="_blank">脚本已更新，请重新制作书签，重新安装油猴脚本。</a><br />
 <br />
 <b>【账号注册】</b><br />
 如果您连V:P!И是什么都不知道，或者根本懒得注册，请跳过本节。<br />
@@ -107,17 +104,17 @@ x之后（1e2d3c）是<b>igneous</b>，一个有用的校验码。<br />
 我站公共账号主动改成了这种状态，为的是防止某些人手贱乱改设置，影响他人使用。<br />
 <br />
 <b id="apply">【应用创建】</b><br />
-输入exkey使用私有账号，留空使用公用账号（不一定能用，可能已经被封）：<br />
+输入exkey使用私有账号，留空使用公共账号（不一定能用，可能已经被封）：<br />
 <input type="text" id="exkey" placeholder="exkey" onchange="document.getElementById('bookmark').innerHTML='';document.getElementById('tpmonkey').innerHTML='';if(this.value && (this.value.length<36 || !Number.isInteger(parseInt(this.value.split('x')[0].substr(32))))){this.style.backgroundColor='#FFDDDD';return;};if(this.value){window.location.hash=this.value;}else{history.replaceState(null,null,' ');};this.style.backgroundColor='';" /><br />
 如果填写了私有账号，可以收藏当前页面，方便下次使用。<br />
 <a href="javascript:;" onclick="bookmarkshow();"><u><b>+原始书签</b></u></a><br />
-可以在所有设备和浏览器运行，缺点是每个操作都要手动点击。公用账号无法使用设置、收藏、原图等。<br />
+可以在所有设备和浏览器运行，缺点是每次使用都要手动运行书签。公共账号无法使用设置、收藏、原图等。<br />
 <div id="bookmark"></div>
 <a href="javascript:;" onclick="tpmonkeyshow();"><u><b>+油猴脚本</b></u></a><br />
-浏览器需安装油猴扩展，所有页面自动运行书签，省去手动点击麻烦。IOS不能安装，请使用原始书签。公用账号无法使用设置、收藏、原图等。<br />
+浏览器需安装油猴扩展，所有页面自动运行书签。IOS不能安装，请使用原始书签。公共账号无法使用设置、收藏、原图等。<br />
 <div id="tpmonkey"></div>
 <a href="javascript:;" onclick="unlockershow();"><u><b>+一键解锁</b></u></a><br />
-使用前必须清空浏览器缓存，解锁失败几率较大，不推荐使用。公用账号受其他用户影响，浏览方式几乎每秒都会变，还有手贱的改设置屏蔽中文。<br />
+使用前必须清空浏览器缓存，解锁失败几率较大，不推荐使用。公共账号所有人使用同一设置，一人乱改预览模式会导致其他人都跟着变。<br />
 <br />
 <a href="https://github.com/21126881/panda" target="_blank"><u>GitHub</u></a><br />
 <script>

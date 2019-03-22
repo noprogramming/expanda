@@ -39,6 +39,7 @@ document.cookie='ipb_member_id='+getkey.split('x')[0].substr(32)+';path=/;domain
 document.cookie='ipb_pass_hash='+getkey.split('x')[0].substr(0,32)+';path=/;domain=.exhentai.org';
 document.cookie='igneous='+(getkey.split('x')[1]?getkey.split('x')[1]:'')+';path=/;domain=.exhentai.org';
 document.cookie='yay=0;path=/;domain=.exhentai.org';
+document.cookie='sk=;path=/;domain=.exhentai.org';
 var xhr=new XMLHttpRequest();
 xhr.open('GET','https://exhentai.org',true);
 xhr.onerror=function(e){if(confirm(panda_lang_a001)){panda_leapover(getkey);};};

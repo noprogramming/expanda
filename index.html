@@ -113,7 +113,7 @@ x之后（1e2d3c）是<b>igneous</b>，一个有用的校验码。<br />
 <div id="monkey" style="display:none;">
 <span>
 <b>[兼容检查]</b><br />
-油猴脚本可运行于以下浏览器，如果您的设备没有请自行安装：<br />
+油猴脚本可运行于以下浏览器，如果您的设备没有请下载安装：<br />
 <a href="https://www.mozilla.org/firefox/" target="_blank"><u><b>Firefox</b></u></a>（Windows/macOS/Linux/Android）<br />
 <a href="https://www.google.cn/chrome/" target="_blank"><u><b>Chrome</b></u></a>（Windows/macOS/Linux/Android）<br />
 <a href="https://www.microsoft.com/zh-cn/windows/microsoft-edge" target="_blank"><u><b>Edge</b></u></a>（Windows）<br />
@@ -207,7 +207,7 @@ return true;
 };
 function exkey_setup(){
 var mykey=window.location.hash?window.location.hash.substr(1):'';
-if(exkey_check(mykey)){document.getElementById('exkey').innerHTML='<td colspan="4"><a href="javascript:;" onclick="if(confirm(\'解绑账号？\')){window.location.hash=\'\';exkey_setup();};"><b>'+mykey+'</b></a></td>';}
+if(exkey_check(mykey)){document.getElementById('exkey').innerHTML='<td colspan="4"><a href="javascript:;" onclick="if(confirm(\'解除绑定？\')){window.location.hash=\'\';exkey_setup();};"><b>'+mykey+'</b></a></td>';}
 else{mykey='';document.getElementById('exkey').innerHTML='<td colspan="1"><a href="javascript:;" onclick="show(this,\'login\');">绑定</a></td><td colspan="1"><a href="javascript:;" onclick="show(this,\'register\');">注册</a></td>';};
 document.getElementById('monkey_link').href='https://api.panda.gxtel.com/'+(mykey?(mykey+'.'):'')+'panda.user.js';
 document.getElementById('origin_code').value="javascript:(function(){var a=document.createElement('script');a.setAttribute('src','//"+window.location.hostname+window.location.pathname.substring(0,window.location.pathname.lastIndexOf('/'))+"/panda.js?'+Date.parse(new Date()));"+(mykey?"a.setAttribute('exkey','"+mykey+"');":"")+"document.body.appendChild(a);}());";

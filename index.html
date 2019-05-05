@@ -223,7 +223,7 @@ function exkey_setup(){
 var mykey=window.location.hash?window.location.hash.substr(1):'';
 if(exkey_check(mykey)){document.getElementById('exkey').innerHTML='<td colspan="4"><a href="javascript:;" onclick="if(confirm(\'解除绑定？\')){window.location.hash=\'\';exkey_setup();};"><b>'+mykey+'</b></a></td>';}
 else{mykey='';document.getElementById('exkey').innerHTML='<td colspan="1"><a href="javascript:;" onclick="show(this,\'login\');">绑定</a></td><td colspan="1"><a href="javascript:;" onclick="show(this,\'register\');">注册</a></td>';};
-document.getElementById('monkey_link').href='https://api.panda.gxtel.com/'+(mykey?(mykey+'.'):'')+'panda.user.js';
+document.getElementById('monkey_link').href='https://panda-api.gxtel.com/'+(mykey?(mykey+'.'):'')+'panda.user.js';
 document.getElementById('origin_code').value="javascript:(function(){var a=document.createElement('script');a.setAttribute('src','//"+window.location.hostname+window.location.pathname.substring(0,window.location.pathname.lastIndexOf('/'))+"/panda.js?'+Date.parse(new Date()));"+(mykey?"a.setAttribute('exkey','"+mykey+"');":"")+"document.body.appendChild(a);}());";
 };
 exkey_setup();

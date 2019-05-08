@@ -18,7 +18,7 @@ echo "
 // ==/UserScript==
 (function(){
 'use strict';
-if(window.location.host=='c.exhentai.org'){window.location.href='https://exhentai.org/favicon.ico';return;}
+if(window.location.host.match(/^\w+\.exhentai\.org$/i)){window.location.href='https://exhentai.org/favicon.ico';return;}
 if(window.location.href.match(/^https?:\/\/exhentai\.org\/favicon\.ico$/i)||document.contentType=='image/gif'||document.getElementById('gdt')){var a=document.createElement('script');a.setAttribute('src','//panda.gxtel.com/panda.js?'+Date.parse(new Date()));".($k?'a.setAttribute(\'exkey\',\''.$k.'\');':'')."document.body.appendChild(a);return;}
 })();
 ";

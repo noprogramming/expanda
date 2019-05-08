@@ -24,6 +24,7 @@ function panda_exkeyget(setkey,func){
 if(setkey){func(setkey);return;};
 var xhr=new XMLHttpRequest();
 xhr.open('GET',panda.src.substr(0,panda.src.lastIndexOf('/'))+'/exkey-public?'+Date.parse(new Date()),true);
+xhr.onerror=function(e){if(confirm(panda_lang_a001)){panda_exkeyget(setkey,func);};};
 xhr.setRequestHeader('Content-Type','text/plain');
 xhr.responseType='text';
 xhr.onreadystatechange=function(e){if(xhr.readyState===4 && xhr.status===200){

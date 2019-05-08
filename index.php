@@ -8,7 +8,7 @@ echo "
 // @namespace    https://panda.gxtel.com
 // @description  zh-cn/
 // @license      MIT
-// @version      9
+// @version      10
 // @match        *://*.exhentai.org/
 // @match        *://*.exhentai.org/?page=*
 // @match        *://*.exhentai.org/g/*

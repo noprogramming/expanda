@@ -171,10 +171,11 @@ document.cookie='yay=0;path=/;domain=.exhentai.org';
 console.log('hello');
 
 var sniff=new XMLHttpRequest();
-sniff.open('GET',window.location.href,true);
+sniff.open('HEAD',window.location.href,true);
 sniff.onerror=function(e){}; //恢复账号先！
-sniff.onreadystatechange=function(e){if(xhr.readyState===4 && xhr.status===200){
-console.log(sniff.getResponseHeader(Location));
+sniff.onreadystatechange=function(e){if(sniff.readyState===4 && sniff.status===200){
+console.log(sniff.responseText);
+//console.log(sniff.getResponseHeader(Location));
 }};
 sniff.send(null);
 

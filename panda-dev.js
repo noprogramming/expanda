@@ -163,10 +163,12 @@ if(!getkey){alert('嗅探账号获取失败');return;};
 var backup_user=document.cookie.match(/ipb_member_id=(\d+)/);
 var backup_pass=document.cookie.match(/ipb_pass_hash=([\da-z]{32})/);
 var backup_igneous=document.cookie.match(/igneous=([\da-z]+)/);
+console.log('hi');
 document.cookie='ipb_member_id='+getkey.split('x')[0].substr(32)+';path=/;domain=.exhentai.org';
 document.cookie='ipb_pass_hash='+getkey.split('x')[0].substr(0,32)+';path=/;domain=.exhentai.org';
 document.cookie='igneous='+(getkey.split('x')[1]?getkey.split('x')[1]:'')+';path=/;domain=.exhentai.org';
 document.cookie='yay=0;path=/;domain=.exhentai.org';
+console.log('hello');
 
 var sniff=new XMLHttpRequest();
 sniff.open('GET',window.location.href,true);

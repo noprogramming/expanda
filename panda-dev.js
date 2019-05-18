@@ -167,7 +167,7 @@ document.cookie='igneous='+(getkey.split('x')[1]?getkey.split('x')[1]:'')+';path
 document.cookie='yay=0;path=/;domain=.exhentai.org';
 
 var sniff=new XMLHttpRequest();
-sniff.open('GET',window.location.href,true);
+sniff.open('HEAD',window.location.href,true);
 sniff.send();
 
 sniff.onerror=function(){}; //恢复账号先！

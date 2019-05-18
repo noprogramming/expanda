@@ -166,18 +166,11 @@ document.cookie='ipb_pass_hash='+getkey.split('x')[0].substr(0,32)+';path=/;doma
 document.cookie='igneous='+(getkey.split('x')[1]?getkey.split('x')[1]:'')+';path=/;domain=.exhentai.org';
 document.cookie='yay=0;path=/;domain=.exhentai.org';
 
-var sniff=new XMLHttpRequest();
-sniff.open('HEAD',window.location.href,true);
-sniff.send();
 
-sniff.onerror=function(){}; //恢复账号先！
-
-sniff.onreadystatechange=function(){
-if(this.readyState==this.HEADERS_RECEIVED){
-console.log(sniff.getAllResponseHeaders());
-console.log(this.getAllResponseHeaders());
-
-}};
+//var img=document.createElement('img');
+var img=new Image();
+img.src=this.location.href;
+img.onload=function{document.body.appendChild(img);console.log('back');};
 
 }};
 xhr.setRequestHeader('Content-Type','text/plain');

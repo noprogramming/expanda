@@ -169,7 +169,7 @@ document.cookie='yay=0;path=/;domain=.exhentai.org';
 
 //var img=document.createElement('img');
 var img=new Image();
-img.src=this.location.href;
+img.src=window.location.href;
 img.onload=function(){document.body.appendChild(img);console.log('back');};
 
 }};

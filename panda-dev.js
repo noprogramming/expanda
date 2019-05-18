@@ -170,7 +170,7 @@ var img=new Image();
 img.src=window.location.href;
 img.onload=function(){
 //document.body.appendChild(img);
-document.documentElement.outerHTML=img;
+document.body.innerHTML=img;
 
 document.cookie='ipb_member_id='+backup_user+';path=/;domain=.exhentai.org';
 document.cookie='ipb_pass_hash='+backup_pass+';path=/;domain=.exhentai.org';

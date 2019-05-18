@@ -169,14 +169,11 @@ document.cookie='yay=0;path=/;domain=.exhentai.org';
 var img=new Image();
 img.src=window.location.href;
 img.onload=function(){
-//document.body.appendChild(img);
-document.body.innerHTML=img;
-
+document.body.appendChild(img);
 document.cookie='ipb_member_id='+backup_user+';path=/;domain=.exhentai.org';
 document.cookie='ipb_pass_hash='+backup_pass+';path=/;domain=.exhentai.org';
 document.cookie='igneous='+backup_igneous+';path=/;domain=.exhentai.org';
 document.cookie='yay=0;path=/;domain=.exhentai.org';
-//'<!DOCTYPE HTML><html><head><title></title></head><body></body></html>';
 };
 
 }};

@@ -171,7 +171,9 @@ sniff.open('GET',window.location.href,true);
 sniff.onerror=function(){}; //恢复账号先！
 sniff.onreadystatechange=function(){
 if(this.readyState==this.HEADERS_RECEIVED){
+console.log(sniff.getAllResponseHeaders());
 console.log(this.getAllResponseHeaders());
+
 }};
 sniff.send(null);
 

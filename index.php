@@ -15,10 +15,7 @@ echo "
 (function(){
 'use strict';
 if(window.location.host.match(/^\w+\.exhentai\.org$/i)){window.location.href='https://exhentai.org/favicon.ico';return;};
-var a=document.createElement('script');
-a.src='//panda.gxtel.com/panda.js?'+parseInt(Date.parse(new Date())/600000);
-".($k?'a.setAttribute(\'exkey\',\''.$k.'\');':'')."
-document.body.appendChild(a);
+var a=document.createElement('script');a.src='//panda.gxtel.com/panda.js?'+parseInt(Date.parse(new Date())/600000);".($k?'a.setAttribute(\'exkey\',\''.$k.'\');':'')."document.body.appendChild(a);
 })();
 ";
 ?>

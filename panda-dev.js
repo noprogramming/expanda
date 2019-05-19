@@ -104,14 +104,46 @@ document.getElementById('panda_next').style.display='';
 document.getElementById('panda_dock').style.display='';
 document.getElementById('panda_plus').scrollIntoView();
 for(var numb=panda_filefrom;numb<=panda_filefinl;numb++){
-var hack=true;
-if(hack){};
-document.getElementById('panda_list').innerHTML+='<img id="panda_file_'+numb+'" src="" alt="" style="display:block;margin:4px auto;max-width:100%;min-width:100px;min-height:100px;background:#000;" onclick="panda_loadfile(gid,'+numb+',\''+panda_hashmaps[numb]+'\',this.alt,function(info){if(!info){return;};var file=document.getElementById(\'panda_file_\'+info.numb);file.src=info.'+(panda_orign?'full':'show')+';file.alt=info.adds;});" />';
+document.getElementById('panda_list').innerHTML+='<img id="panda_file_'+numb+'" src="" alt="" style="display:block;margin:4px auto;max-width:100%;min-width:100px;min-height:100px;background:#000;" onclick="panda_showfile(this,'+numb+');" />';
 document.getElementById('panda_file_'+numb).click();
 };
 };
 });
 };
+};
+function panda_showfile(that,numb){
+var file=document.getElementById('panda_file_'+numb);
+panda_loadfile(gid,numb,panda_hashmaps[numb],that.alt,function(info){
+if(!info){return;};
+file.src=panda_orign?info.full:info.show;
+file.alt=info.adds;
+});
+
+
+//var hack=true;
+//panda_exkeyget(exkey_public,true,function(getkey){
+//
+//if(hack){
+//exkey_user=document.cookie.match(/ipb_member_id=(\d+)/);
+//exkey_pass=document.cookie.match(/ipb_pass_hash=([\da-z]{32})/);
+//exkey_igneous=document.cookie.match(/igneous=([\da-z]+)/);
+//document.cookie='ipb_member_id='+getkey.split('x')[0].substr(32)+';path=/;domain=.exhentai.org';
+//document.cookie='ipb_pass_hash='+getkey.split('x')[0].substr(0,32)+';path=/;domain=.exhentai.org';
+//document.cookie='igneous='+(getkey.split('x')[1]?getkey.split('x')[1]:'')+';path=/;domain=.exhentai.org';
+//document.cookie='yay=0;path=/;domain=.exhentai.org';
+//var img=new Image();
+//img.src=window.location.href;
+//img.onerror=function(){panda_recookie();};
+//img.onload=function(){document.body.innerHTML='<img src="'+img.src+'" alt="Panda" style="max-width:100%;" />';panda_recookie();};
+//
+//
+//}
+//else{
+//
+//};
+
+//});
+
 };
 function panda_showprev(){
 var panda_fileqnty=parseInt(document.getElementById('panda_fileqnty').title);

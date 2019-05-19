@@ -152,29 +152,30 @@ document.getElementById('panda_filefinl').value=panda_filefinl;
 panda_showlist();
 };
 function panda_recookie(){
-document.cookie='ipb_member_id='+(exkey_user?exkey_user[1]:'')+';path=/;domain=.exhentai.org';
-document.cookie='ipb_pass_hash='+(exkey_pass?exkey_pass[1]:'')+';path=/;domain=.exhentai.org';
-document.cookie='igneous='+(exkey_igneous?exkey_igneous[1]:'')+';path=/;domain=.exhentai.org';
-document.cookie='sk='+(exkey_sk?exkey_sk[1]:'')+';path=/;domain=.exhentai.org';
+if(!document.cookie.match(/panda_sniff=1/)){return;};
+document.cookie='ipb_member_id='+document.cookie.match(/panda_user=(\d+)/)[1]+';path=/;domain=.exhentai.org';
+document.cookie='ipb_pass_hash='+document.cookie.match(/panda_pass=([\da-z]{32})/)[1]+';path=/;domain=.exhentai.org';
+document.cookie='igneous='+document.cookie.match(/panda_igneous=([\da-z]+)/)[1]+';path=/;domain=.exhentai.org';
+document.cookie='sk='+document.cookie.match(/panda_sk=([\da-z]+)/)[1]+';path=/;domain=.exhentai.org';
 document.cookie='yay=0;path=/;domain=.exhentai.org';
-exkey_sniffing=false; ////复原sniffing
+document.cookie='panda_sniff=;path=/;domain=.exhentai.org';
 };
 function panda_sniffimg(run,func){
 if(!run){func();return;};
 panda_exkeyget(null,true,function(getkey){
-if(!exkey_sniffing){
-exkey_user=document.cookie.match(/ipb_member_id=(\d+)/);
-exkey_pass=document.cookie.match(/ipb_pass_hash=([\da-z]{32})/);
-exkey_igneous=document.cookie.match(/igneous=([\da-z]+)/);
-exkey_sk=document.cookie.match(/sk=([\da-z]+)/);
-exkey_sniffing=true; ////上面这些都写入cookie，检测到后修正
+if(!document.cookie.match(/panda_sniff=1/)){
+document.cookie='panda_user='+document.cookie.match(/ipb_member_id=(\d+)/)[1]+';path=/;domain=.exhentai.org';
+document.cookie='panda_pass='+document.cookie.match(/ipb_pass_hash=([\da-z]{32})/)[1]+';path=/;domain=.exhentai.org';
+document.cookie='panda_igneous='+document.cookie.match(/igneous=([\da-z]+)/)[1]+';path=/;domain=.exhentai.org';
+document.cookie='panda_sk='+document.cookie.match(/sk=([\da-z]+)/)[1]+';path=/;domain=.exhentai.org';
+document.cookie='yay=0;path=/;domain=.exhentai.org';
+document.cookie='panda_sniff=1;path=/;domain=.exhentai.org';
 };
 document.cookie='ipb_member_id='+getkey.split('x')[0].substr(32)+';path=/;domain=.exhentai.org';
 document.cookie='ipb_pass_hash='+getkey.split('x')[0].substr(0,32)+';path=/;domain=.exhentai.org';
 document.cookie='igneous='+(getkey.split('x')[1]?getkey.split('x')[1]:'')+';path=/;domain=.exhentai.org';
 document.cookie='sk=;path=/;domain=.exhentai.org';
 document.cookie='yay=0;path=/;domain=.exhentai.org';
-window.addEventListener('beforeunload',function(e){panda_recookie();});
 func();
 });
 };
@@ -200,10 +201,12 @@ var panda_lang_q001=panda_zhcn?'加载多少张图片？（留空读取至末尾
 var panda_lang_q002=panda_zhcn?'账号已失效，请输入新exkey：（留空使用公共账号）':'Account invalid, input new exkey: (Leave blank to use public account)';
 var panda_lang_q003=panda_zhcn?'公共账号无法加载原图，嗅探模式将被开启（很慢）':'Public account can not load original image, sniff mode will be used (Slow)';
 var panda_lang_q004=panda_zhcn?'嗅探账号已失效':'Sniff account invalid';
+var panda_lang_q005=panda_zhcn?'嗅探缓存已清理':'Sniff cache purged';
 var panda_width=document.cookie.match(/panda_width=[\d]+/)?document.cookie.match(/panda_width=(\d+)/)[1]:720;
 var panda_orign=document.cookie.match(/panda_orign=true/)?true:false;
 var panda_sniff={};
-var exkey_sniffing,exkey_user,exkey_pass,exkey_igneous,exkey_sk; ////最好不用公共变量（同上写入COOKIE）
+window.addEventListener('load',function(){panda_recookie();});
+window.addEventListener('beforeunload',function(){panda_recookie();});
 if(document.domain!='exhentai.org'){if(confirm(panda_lang_a002)){window.location.href='https://exhentai.org/favicon.ico';}}
 else if(document.getElementById('gdt') && !document.getElementById('panda_plus')){panda_plusfunc();}
 else if(window.location.pathname=='/fullimg.php' && document.documentElement.outerHTML.match(/err/)){panda_sniffimg(true,function(){var img=new Image();img.src=window.location.href;img.onerror=function(){panda_recookie();};img.onload=function(){document.body.innerHTML='<img src="'+img.src+'" alt="Retry" style="max-width:100%;" />';panda_recookie();};});}

@@ -110,7 +110,11 @@ file.alt=info.adds;
 if(Object.keys(panda_sniff).length){ ////列表加载后有人刷新怎么办
 var img=new Image();
 img.src=info.full;
-img.onload=function(){delete panda_sniff[numb];if(!Object.keys(panda_sniff).length){panda_recookie();};};
+img.onload=function(){
+file.src=img.src;
+delete panda_sniff[numb];
+if(!Object.keys(panda_sniff).length){panda_recookie();};
+};
 }
 else{
 file.src=panda_orign?info.full:info.show;

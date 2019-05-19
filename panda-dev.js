@@ -1,4 +1,5 @@
 javascript:
+if(panda){console.log('exist');return;};
 var panda=document.getElementsByTagName('script')[document.getElementsByTagName('script').length-1];
 var panda_zhcn=(navigator.language && navigator.language=='zh-CN')?true:false;
 var panda_lang_a001=panda_zhcn?'网络错误，是否重试？':'Network error, retry?';
@@ -205,8 +206,7 @@ code.innerHTML='<div id="panda_plus" class="gm" style="text-align:center;"><h3>'
 var gtbn=document.getElementById('cdiv');
 gtbn.parentNode.insertBefore(code,gtbn);
 };
-if(document.getElementById('panda_plus')){console.log('exist');} ////改为熊猫重复？
-else if(document.domain!='exhentai.org'){if(confirm(panda_lang_a002)){window.location.href='https://exhentai.org/favicon.ico';}}
+if(document.domain!='exhentai.org'){if(confirm(panda_lang_a002)){window.location.href='https://exhentai.org/favicon.ico';}}
 else if(window.location.pathname=='/fullimg.php' && document.documentElement.outerHTML.match(/err/)){panda_hackfull();}
 else if(document.getElementById('gdt')){panda_plusfunc();}
 else{panda_leapover(panda.getAttribute('exkey'));};

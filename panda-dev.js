@@ -167,7 +167,7 @@ document.cookie='yay=0;path=/;domain=.exhentai.org';
 var img=new Image();
 img.src=window.location.href;
 img.onerror=function(){panda_recookie();};
-img.onload=function(){document.body.innerHTML='<img src="'+img.src+'" alt="Panda" />';panda_recookie();};
+img.onload=function(){document.body.innerHTML='<img src="'+img.src+'" alt="Panda" style="max-width:100%;" />';panda_recookie();};
 }};
 xhr.setRequestHeader('Content-Type','text/plain');
 xhr.responseType='text';

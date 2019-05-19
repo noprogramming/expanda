@@ -1,23 +1,4 @@
 javascript:
-if(!panda){
-var panda=document.getElementsByTagName('script')[document.getElementsByTagName('script').length-1];
-var panda_zhcn=(navigator.language && navigator.language=='zh-CN')?true:false;
-var panda_lang_a001=panda_zhcn?'网络错误，是否重试？':'Network error, retry?';
-var panda_lang_a002=panda_zhcn?'进入里站？':'Go to exhentai?';
-var panda_lang_a003=panda_zhcn?'输入有误':'Incorrect input';
-var panda_lang_a004=panda_zhcn?'到达边界':'Edge reached';
-var panda_lang_p001=panda_zhcn?'范围':'Range';
-var panda_lang_p002=panda_zhcn?'宽度':'Width';
-var panda_lang_p003=panda_zhcn?'原图':'Orign';
-var panda_lang_p004=panda_zhcn?'竖屏浏览':'Reader';
-var panda_lang_p005=panda_zhcn?'切换账号':'Altkey';
-var panda_lang_q001=panda_zhcn?'加载多少张图片？（留空读取至末尾）':'How many pictures to load? (Leave blank to load to end)';
-var panda_lang_q002=panda_zhcn?'账号已失效，请输入新exkey：（留空使用公共账号）':'Account invalid, input new exkey: (Leave blank to use public account)';
-var panda_lang_q003=panda_zhcn?'嗅探账号已失效':'Sniff account invalid';
-var panda_width=document.cookie.match(/panda_width=[\d]+/)?document.cookie.match(/panda_width=(\d+)/)[1]:720;
-var panda_orign=document.cookie.match(/panda_orign=true/)?true:false;
-var exkey_sniffing,exkey_user,exkey_pass,exkey_igneous,exkey_sk;
-var hack=true;
 function panda_exkeyset(){
 var setkey=prompt(panda_lang_q002,panda.getAttribute('exkey')?panda.getAttribute('exkey'):'');
 if(!setkey && setkey!==''){return;};
@@ -206,6 +187,26 @@ code.innerHTML='<div id="panda_plus" class="gm" style="text-align:center;"><h3>'
 var gtbn=document.getElementById('cdiv');
 gtbn.parentNode.insertBefore(code,gtbn);
 };
+if(!sessionStorage.getItem('panda')){
+sessionStorage.setItem('panda','bookmark');
+var panda=document.getElementsByTagName('script')[document.getElementsByTagName('script').length-1];
+var panda_zhcn=(navigator.language && navigator.language=='zh-CN')?true:false;
+var panda_lang_a001=panda_zhcn?'网络错误，是否重试？':'Network error, retry?';
+var panda_lang_a002=panda_zhcn?'进入里站？':'Go to exhentai?';
+var panda_lang_a003=panda_zhcn?'输入有误':'Incorrect input';
+var panda_lang_a004=panda_zhcn?'到达边界':'Edge reached';
+var panda_lang_p001=panda_zhcn?'范围':'Range';
+var panda_lang_p002=panda_zhcn?'宽度':'Width';
+var panda_lang_p003=panda_zhcn?'原图':'Orign';
+var panda_lang_p004=panda_zhcn?'竖屏浏览':'Reader';
+var panda_lang_p005=panda_zhcn?'切换账号':'Altkey';
+var panda_lang_q001=panda_zhcn?'加载多少张图片？（留空读取至末尾）':'How many pictures to load? (Leave blank to load to end)';
+var panda_lang_q002=panda_zhcn?'账号已失效，请输入新exkey：（留空使用公共账号）':'Account invalid, input new exkey: (Leave blank to use public account)';
+var panda_lang_q003=panda_zhcn?'嗅探账号已失效':'Sniff account invalid';
+var panda_width=document.cookie.match(/panda_width=[\d]+/)?document.cookie.match(/panda_width=(\d+)/)[1]:720;
+var panda_orign=document.cookie.match(/panda_orign=true/)?true:false;
+var exkey_sniffing,exkey_user,exkey_pass,exkey_igneous,exkey_sk;
+var hack=true;
 if(document.domain!='exhentai.org'){if(confirm(panda_lang_a002)){window.location.href='https://exhentai.org/favicon.ico';}}
 else if(window.location.pathname=='/fullimg.php' && document.documentElement.outerHTML.match(/err/)){panda_hackfull();}
 else if(document.getElementById('gdt')){panda_plusfunc();}

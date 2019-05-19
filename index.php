@@ -8,18 +8,17 @@ echo "
 // @namespace    https://panda.gxtel.com
 // @description  zh-cn/
 // @license      MIT
-// @version      10
-// @match        *://*.exhentai.org/
-// @match        *://*.exhentai.org/?page=*
-// @match        *://*.exhentai.org/g/*
-// @match        *://*.exhentai.org/s/*
-// @match        *://*.exhentai.org/favicon.ico
+// @version      11
+// @match        *.exhentai.org/*
 // @grant        none
 // ==/UserScript==
 (function(){
 'use strict';
-if(window.location.host.match(/^\w+\.exhentai\.org$/i)){window.location.href='https://exhentai.org/favicon.ico';return;}
-if(window.location.href.match(/^https?:\/\/exhentai\.org\/favicon\.ico$/i)||document.contentType=='image/gif'||document.getElementById('gdt')){var a=document.createElement('script');a.setAttribute('src','//panda.gxtel.com/panda.js?'+Date.parse(new Date()));".($k?'a.setAttribute(\'exkey\',\''.$k.'\');':'')."document.body.appendChild(a);return;}
+if(window.location.host.match(/^\w+\.exhentai\.org$/i)){window.location.href='https://exhentai.org/favicon.ico';return;};
+var a=document.createElement('script');
+a.src='//panda.gxtel.com/panda.js?'+parseInt(Date.parse(new Date())/600000);
+".($k?'a.setAttribute(\'exkey\',\''.$k.'\');':'')."
+document.body.appendChild(a);
 })();
 ";
 ?>

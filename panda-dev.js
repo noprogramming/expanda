@@ -198,7 +198,7 @@ var panda_lang_p004=panda_zhcn?'竖屏浏览':'Reader';
 var panda_lang_p005=panda_zhcn?'切换账号':'Altkey';
 var panda_lang_q001=panda_zhcn?'加载多少张图片？（留空读取至末尾）':'How many pictures to load? (Leave blank to load to end)';
 var panda_lang_q002=panda_zhcn?'账号已失效，请输入新exkey：（留空使用公共账号）':'Account invalid, input new exkey: (Leave blank to use public account)';
-var panda_lang_q003=panda_zhcn?'公共账号无法加载原图，是否开启嗅探模式？':'Public account can not load original image, turn on sniff mode?';
+var panda_lang_q003=panda_zhcn?'公共账号无法加载原图，是否开启嗅探模式？（速度慢）':'Public account can not load original image, turn on sniff mode? (Slow)';
 var panda_lang_q004=panda_zhcn?'嗅探账号已失效':'Sniff account invalid';
 var panda_width=document.cookie.match(/panda_width=[\d]+/)?document.cookie.match(/panda_width=(\d+)/)[1]:720;
 var panda_orign=document.cookie.match(/panda_orign=true/)?true:false;

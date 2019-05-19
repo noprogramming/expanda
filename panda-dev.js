@@ -152,6 +152,7 @@ document.cookie='yay=0;path=/;domain=.exhentai.org';
 exkey_sniffing=false; ////复原sniffing
 };
 function panda_sniffimg(run,func){
+console.log('run:'+run);
 if(!run){func();return;};
 panda_exkeyget(null,true,function(getkey){
 if(!exkey_sniffing){
@@ -161,7 +162,6 @@ exkey_igneous=document.cookie.match(/igneous=([\da-z]+)/);
 exkey_sk=document.cookie.match(/sk=([\da-z]+)/);
 exkey_sniffing=true; ////上面这些都写入cookie，检测到后修正
 };
-console.log(getkey);
 document.cookie='ipb_member_id='+getkey.split('x')[0].substr(32)+';path=/;domain=.exhentai.org';
 document.cookie='ipb_pass_hash='+getkey.split('x')[0].substr(0,32)+';path=/;domain=.exhentai.org';
 document.cookie='igneous='+(getkey.split('x')[1]?getkey.split('x')[1]:'')+';path=/;domain=.exhentai.org';
@@ -199,4 +199,4 @@ var exkey_sniffing,exkey_user,exkey_pass,exkey_igneous,exkey_sk; ////最好不�
 if(document.domain!='exhentai.org'){if(confirm(panda_lang_a002)){window.location.href='https://exhentai.org/favicon.ico';}}
 else if(document.getElementById('gdt') && !document.getElementById('panda_plus')){panda_plusfunc();}
 else if(window.location.pathname=='/fullimg.php' && document.documentElement.outerHTML.match(/err/)){panda_sniffimg(true,function(){var img=new Image();img.src=window.location.href;img.onerror=function(){panda_recookie();};img.onload=function(){document.body.innerHTML='<img src="'+img.src+'" alt="Retry" style="max-width:100%;" />';panda_recookie();};});}
-else if(window.location.pathname=='/favicon.ico' || document.contentType=='image/gif'){panda_leapover(panda.getAttribute('exkey'));};
+else if(window.location.pathname=='/favicon.ico' || document.contentType=='image/gif'){panda_leapover(panda.getAttribute('exkey'));}; ////防止重复刷新？

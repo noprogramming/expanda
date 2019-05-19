@@ -187,8 +187,8 @@ code.innerHTML='<div id="panda_plus" class="gm" style="text-align:center;"><h3>'
 var gtbn=document.getElementById('cdiv');
 gtbn.parentNode.insertBefore(code,gtbn);
 };
-if(!sessionStorage.getItem('panda')){
-sessionStorage.setItem('panda','bookmark');
+if(window.location.href!=sessionStorage.getItem('panda')){
+sessionStorage.setItem('panda',window.location.href);
 var panda=document.getElementsByTagName('script')[document.getElementsByTagName('script').length-1];
 var panda_zhcn=(navigator.language && navigator.language=='zh-CN')?true:false;
 var panda_lang_a001=panda_zhcn?'网络错误，是否重试？':'Network error, retry?';

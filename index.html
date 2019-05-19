@@ -35,12 +35,10 @@ input[type=button]{padding-top:2px;}
 <td colspan="2">
 <div name="main_used">
 <span>
-<b>[2019/05/19]</b><br />
-【重要更新】（仅预告，暂未上线）<br />
+<b>[2019/05/20] 【重要】</b><br />
 增加脚本缓存，减少读取错误。<br />
 增加嗅探模式，公共书签也可以加载原图了。<br />
-（此更新需重新添加油猴脚本或创建传统书签）<br />
-（预计2019/05/20上线）<br />
+<b>更新需要：重新创建传统书签 / 重新添加油猴脚本 (V11)</b><br />
 </span>
 <hr />
 <span>
@@ -243,7 +241,7 @@ var mykey=window.location.hash?window.location.hash.substr(1):'';
 if(exkey_check(mykey)){document.getElementById('exkey').innerHTML='<td colspan="4"><a href="javascript:;" onclick="if(confirm(\'解除绑定？\')){window.location.hash=\'\';exkey_setup();};"><b>'+mykey+'</b></a></td>';}
 else{mykey='';document.getElementById('exkey').innerHTML='<td colspan="1"><a href="javascript:;" onclick="show(this,\'login\');">绑定</a></td><td colspan="1"><a href="javascript:;" onclick="show(this,\'register\');">注册</a></td>';};
 document.getElementById('monkey_link').href='https://panda-api.gxtel.com/'+(mykey?(mykey+'.'):'')+'panda.user.js';
-document.getElementById('origin_code').value="javascript:(function(){var a=document.createElement('script');a.setAttribute('src','//"+window.location.hostname+window.location.pathname.substring(0,window.location.pathname.lastIndexOf('/'))+"/panda.js?'+Date.parse(new Date()));"+(mykey?"a.setAttribute('exkey','"+mykey+"');":"")+"document.body.appendChild(a);}());";
+document.getElementById('origin_code').value="javascript:(function(){var a=document.createElement('script');a.setAttribute('src','//"+window.location.hostname+window.location.pathname.substring(0,window.location.pathname.lastIndexOf('/'))+"/panda.js?'+parseInt(Date.parse(new Date())/600000));"+(mykey?"a.setAttribute('exkey','"+mykey+"');":"")+"document.body.appendChild(a);}());";
 };
 exkey_setup();
 </script>

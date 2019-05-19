@@ -208,5 +208,5 @@ var panda_sniff={};
 window.addEventListener('beforeunload',function(){panda_recookie();});
 if(document.domain!='exhentai.org'){if(confirm(panda_lang_a002)){window.location.href='https://exhentai.org/favicon.ico';}}
 else if(document.getElementById('gdt') && !document.getElementById('panda_plus')){panda_plusfunc();}
-else if(window.location.pathname=='/fullimg.php' && document.documentElement.outerHTML.match(/err/)){panda_sniffimg(true,function(){var img=new Image();img.src=window.location.href;img.onerror=function(){panda_recookie();};img.onload=function(){document.body.innerHTML='<img src="'+img.src+'" alt="Retry" style="max-width:100%;" />';panda_recookie();};});}
+else if(window.location.pathname=='/fullimg.php' && document.documentElement.outerHTML.match(/err/)){document.body.innerHTML='<img id="img" src="" alt="Please Refresh" style="max-width:100%;" />';panda_sniffimg(true,function(){var img=new Image();img.src=window.location.href;img.onerror=function(){panda_recookie();};img.onload=function(){document.getElementById('img').src=img.src;panda_recookie();};});}
 else if(window.location.pathname=='/favicon.ico' || document.contentType=='image/gif'){panda_leapover(panda.getAttribute('exkey'));}; ////防止重复刷新？

@@ -1,5 +1,5 @@
 javascript:
-if(panda){console.log('exist');return;};
+if(!panda){
 var panda=document.getElementsByTagName('script')[document.getElementsByTagName('script').length-1];
 var panda_zhcn=(navigator.language && navigator.language=='zh-CN')?true:false;
 var panda_lang_a001=panda_zhcn?'网络错误，是否重试？':'Network error, retry?';
@@ -210,3 +210,4 @@ if(document.domain!='exhentai.org'){if(confirm(panda_lang_a002)){window.location
 else if(window.location.pathname=='/fullimg.php' && document.documentElement.outerHTML.match(/err/)){panda_hackfull();}
 else if(document.getElementById('gdt')){panda_plusfunc();}
 else{panda_leapover(panda.getAttribute('exkey'));};
+};

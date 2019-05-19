@@ -30,8 +30,9 @@ xhr.open('GET','https://exhentai.org',true);
 xhr.onerror=function(){if(confirm(panda_lang_a001)){panda_leapover(getkey);};};
 xhr.onreadystatechange=function(){if(this.readyState===4 && this.status===200){
 if(!this.responseText.match(/<link(.*?)exhentai(.*?)>/)){panda_exkeyset();return;};
-if(window.location.pathname=='/favicon.ico'){window.location.href='/';return;};
-sessionStorage.setItem('panda',1);window.location.reload();
+sessionStorage.setItem('panda',1);
+if(window.location.pathname=='/favicon.ico'){window.location.href='/';}
+else{window.location.reload();};
 }};
 xhr.send(null);
 });
@@ -187,7 +188,6 @@ code.innerHTML='<div id="panda_plus" class="gm" style="text-align:center;"><h3>'
 var gtbn=document.getElementById('cdiv');
 gtbn.parentNode.insertBefore(code,gtbn);
 };
-sessionStorage.setItem('panda',window.location.href);
 var panda=document.getElementsByTagName('script')[document.getElementsByTagName('script').length-1];
 var panda_zhcn=(navigator.language && navigator.language=='zh-CN')?true:false;
 var panda_lang_a001=panda_zhcn?'网络错误，是否重试？':'Network error, retry?';
@@ -209,4 +209,4 @@ var hack=false;
 if(document.domain!='exhentai.org'){if(confirm(panda_lang_a002)){window.location.href='https://exhentai.org/favicon.ico';}}
 else if(document.getElementById('gdt') && !document.getElementById('panda_plus')){panda_plusfunc();}
 else if(window.location.pathname=='/fullimg.php' && document.documentElement.outerHTML.match(/err/)){panda_hackfull();}
-else if(window.location.pathname=='/favicon.ico' || !sessionStorage.getItem('panda')){panda_leapover(panda.getAttribute('exkey'));};
+else if(window.location.pathname=='/favicon.ico' || (!sessionStorage.getItem('panda') && document.contentType=='image/gif')){panda_leapover(panda.getAttribute('exkey'));};

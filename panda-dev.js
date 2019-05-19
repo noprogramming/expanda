@@ -12,9 +12,9 @@ var panda_lang_p004=panda_zhcn?'竖屏浏览':'Reader';
 var panda_lang_p005=panda_zhcn?'切换账号':'Altkey';
 var panda_lang_q001=panda_zhcn?'加载多少张图片？（留空读取至末尾）':'How many pictures to load? (Leave blank to load to end)';
 var panda_lang_q002=panda_zhcn?'账号已失效，请输入新exkey：（留空使用公共账号）':'Account invalid, input new exkey: (Leave blank to use public account)';
-var panda_lang_q003=panda_zhcn?'嗅探账号已失效':'Sniff account invalid';
 var panda_width=document.cookie.match(/panda_width=[\d]+/)?document.cookie.match(/panda_width=(\d+)/)[1]:720;
 var panda_orign=document.cookie.match(/panda_orign=true/)?true:false;
+var exkey_public,exkey_user,exkey_pass,exkey_igneous;
 function panda_exkeyset(){
 var setkey=prompt(panda_lang_q002,panda.getAttribute('exkey')?panda.getAttribute('exkey'):'');
 if(!setkey && setkey!==''){return;};
@@ -27,7 +27,7 @@ xhr.open('GET',panda.src.substr(0,panda.src.lastIndexOf('/'))+'/exkey-'+(sniff?'
 xhr.onerror=function(){if(confirm(panda_lang_a001)){panda_exkeyget(setkey,sniff,func);};};
 xhr.onreadystatechange=function(){if(this.readyState===4 && this.status===200){
 var getkey=this.responseText.replace(/[\r\n]/g,'');
-if(!getkey){if(sniff){alert(panda_lang_q003);}else{panda_exkeyset();};return;};
+if(!getkey){if(!sniff){panda_exkeyset();};return;};
 func(getkey);
 }};
 xhr.setRequestHeader('Content-Type','text/plain');
@@ -115,34 +115,31 @@ function panda_showfile(numb,hash,adds){
 panda_loadfile(gid,numb,hash,adds,function(info){
 if(!info){return;};
 var file=document.getElementById('panda_file_'+info.numb);
-file.src=panda_orign?info.full:info.show;
 file.alt=info.adds;
+
+var hack=true;
+if(hack){
+panda_exkeyget(exkey_public,true,function(getkey){
+exkey_user=document.cookie.match(/ipb_member_id=(\d+)/);
+exkey_pass=document.cookie.match(/ipb_pass_hash=([\da-z]{32})/);
+exkey_igneous=document.cookie.match(/igneous=([\da-z]+)/);
+document.cookie='ipb_member_id='+getkey.split('x')[0].substr(32)+';path=/;domain=.exhentai.org';
+document.cookie='ipb_pass_hash='+getkey.split('x')[0].substr(0,32)+';path=/;domain=.exhentai.org';
+document.cookie='igneous='+(getkey.split('x')[1]?getkey.split('x')[1]:'')+';path=/;domain=.exhentai.org';
+document.cookie='yay=0;path=/;domain=.exhentai.org';
+var img=new Image();
+img.src=window.location.href;
+img.onerror=function(){panda_recookie();};
+img.onload=function(){
+file.src=img.src;
+panda_recookie();};
 });
+}
+else{
+file.src=panda_orign?info.full:info.show;
+}
 
-//var hack=true;
-//panda_exkeyget(exkey_public,true,function(getkey){
-//
-//if(hack){
-//exkey_user=document.cookie.match(/ipb_member_id=(\d+)/);
-//exkey_pass=document.cookie.match(/ipb_pass_hash=([\da-z]{32})/);
-//exkey_igneous=document.cookie.match(/igneous=([\da-z]+)/);
-//document.cookie='ipb_member_id='+getkey.split('x')[0].substr(32)+';path=/;domain=.exhentai.org';
-//document.cookie='ipb_pass_hash='+getkey.split('x')[0].substr(0,32)+';path=/;domain=.exhentai.org';
-//document.cookie='igneous='+(getkey.split('x')[1]?getkey.split('x')[1]:'')+';path=/;domain=.exhentai.org';
-//document.cookie='yay=0;path=/;domain=.exhentai.org';
-//var img=new Image();
-//img.src=window.location.href;
-//img.onerror=function(){panda_recookie();};
-//img.onload=function(){document.body.innerHTML='<img src="'+img.src+'" alt="Panda" style="max-width:100%;" />';panda_recookie();};
-//
-//
-//}
-//else{
-//
-//};
-
-//});
-
+});
 };
 function panda_showprev(){
 var panda_fileqnty=parseInt(document.getElementById('panda_fileqnty').title);
@@ -204,7 +201,6 @@ document.cookie='ipb_pass_hash='+(exkey_pass?exkey_pass[1]:'')+';path=/;domain=.
 document.cookie='igneous='+(exkey_igneous?exkey_igneous[1]:'')+';path=/;domain=.exhentai.org';
 document.cookie='yay=0;path=/;domain=.exhentai.org';
 };
-var exkey_public,exkey_user,exkey_pass,exkey_igneous;
 if(document.getElementById('panda_plus')){console.log('exist');}
 else if(document.domain!='exhentai.org'){if(confirm(panda_lang_a002)){window.location.href='https://exhentai.org/favicon.ico';}}
 else if(window.location.pathname=='/fullimg.php' && document.documentElement.outerHTML.match(/err/)){panda_hackfull();}

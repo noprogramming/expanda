@@ -118,18 +118,18 @@ var file=document.getElementById('panda_file_'+info.numb);
 file.alt=info.adds;
 
 var hack=true;
-if(hack){
+if(hack && info.show!=info.full){
 panda_exkeyget(exkey_public,true,function(getkey){
 exkey_user=document.cookie.match(/ipb_member_id=(\d+)/);
 exkey_pass=document.cookie.match(/ipb_pass_hash=([\da-z]{32})/);
 exkey_igneous=document.cookie.match(/igneous=([\da-z]+)/);
-console.log(getkey);
+console.log(getkey); //别把以前重复的cookie写入了
 document.cookie='ipb_member_id='+getkey.split('x')[0].substr(32)+';path=/;domain=.exhentai.org';
 document.cookie='ipb_pass_hash='+getkey.split('x')[0].substr(0,32)+';path=/;domain=.exhentai.org';
 document.cookie='igneous='+(getkey.split('x')[1]?getkey.split('x')[1]:'')+';path=/;domain=.exhentai.org';
 document.cookie='yay=0;path=/;domain=.exhentai.org';
 var img=new Image();
-img.src=window.location.href;
+img.src=info.full;
 img.onerror=function(){console.log('error:panda_showfile');panda_recookie();};
 img.onload=function(){
 file.src=img.src;

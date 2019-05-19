@@ -132,18 +132,15 @@ function panda_showfile(numb,hash,adds){
 panda_loadfile(gid,numb,hash,adds,function(info){
 if(!info){return;};
 var file=document.getElementById('panda_file_'+info.numb);
-file.alt=info.adds;
 if(Object.keys(panda_sniff).length){
 var img=new Image();
 img.src=info.full;
-img.onload=function(){
-file.src=img.src;
-delete panda_sniff[numb];
-if(!Object.keys(panda_sniff).length){panda_recookie();};
-};
+img.onerror=function(){file.alt='Error';};
+img.onload=function(){file.src=img.src;delete panda_sniff[numb];if(!Object.keys(panda_sniff).length){panda_recookie();};};
 }
 else{
 file.src=panda_orign?info.full:info.show;
+file.alt=info.adds;
 };
 });
 };

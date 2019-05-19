@@ -88,9 +88,7 @@ document.getElementById('panda_next').style.display='';
 document.getElementById('panda_dock').style.display='';
 document.getElementById('panda_plus').scrollIntoView();
 if(panda_orign && !panda.getAttribute('exkey')){
-for(var numb=panda_filefrom;numb<=panda_filefinl;numb++){
-panda_sniff[numb]=1;
-}
+for(var numb=panda_filefrom;numb<=panda_filefinl;numb++){panda_sniff[numb]=1;};
 };
 panda_sniffimg(Object.keys(panda_sniff).length,function(){
 for(var numb=panda_filefrom;numb<=panda_filefinl;numb++){

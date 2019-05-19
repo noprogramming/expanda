@@ -157,9 +157,9 @@ xhr.onerror=function(){if(confirm(panda_lang_a001)){panda_hackfull();};};
 xhr.onreadystatechange=function(){if(this.readyState===4 && this.status===200){
 var getkey=this.responseText.replace(/[\r\n]/g,'');
 if(!getkey){alert(panda_lang_q003);return;};
-var back_user=document.cookie.match(/ipb_member_id=(\d+)/);
-var back_pass=document.cookie.match(/ipb_pass_hash=([\da-z]{32})/);
-var back_igneous=document.cookie.match(/igneous=([\da-z]+)/);
+back_user=document.cookie.match(/ipb_member_id=(\d+)/);
+back_pass=document.cookie.match(/ipb_pass_hash=([\da-z]{32})/);
+back_igneous=document.cookie.match(/igneous=([\da-z]+)/);
 document.cookie='ipb_member_id='+getkey.split('x')[0].substr(32)+';path=/;domain=.exhentai.org';
 document.cookie='ipb_pass_hash='+getkey.split('x')[0].substr(0,32)+';path=/;domain=.exhentai.org';
 document.cookie='igneous='+(getkey.split('x')[1]?getkey.split('x')[1]:'')+';path=/;domain=.exhentai.org';

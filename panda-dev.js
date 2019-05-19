@@ -96,7 +96,6 @@ panda_sniffimg(Object.keys(panda_sniff).length,function(){
 for(var numb=panda_filefrom;numb<=panda_filefinl;numb++){
 document.getElementById('panda_list').innerHTML+='<img id="panda_file_'+numb+'" src="" alt="" style="display:block;margin:4px auto;max-width:100%;min-width:100px;min-height:100px;background:#000;" onclick="panda_showfile('+numb+',\''+panda_hashmaps[numb]+'\',this.alt);" />';
 document.getElementById('panda_file_'+numb).click();
-delete panda_sniff[numb];if(!Object.keys(panda_sniff).length){panda_recookie();};
 };
 });
 };
@@ -109,6 +108,8 @@ if(!info){return;};
 var file=document.getElementById('panda_file_'+info.numb);
 file.src=panda_orign?info.full:info.show;
 file.alt=info.adds;
+delete panda_sniff[numb];
+if(!Object.keys(panda_sniff).length){panda_recookie();};
 });
 };
 function panda_showprev(){

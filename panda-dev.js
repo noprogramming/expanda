@@ -156,7 +156,7 @@ if(!document.cookie.match(/panda_sniff=1/)){return;};
 document.cookie='ipb_member_id='+document.cookie.match(/panda_user=(\d+)/)[1]+';path=/;domain=.exhentai.org';
 document.cookie='ipb_pass_hash='+document.cookie.match(/panda_pass=([\da-z]{32})/)[1]+';path=/;domain=.exhentai.org';
 document.cookie='igneous='+document.cookie.match(/panda_igneous=([\da-z]+)/)[1]+';path=/;domain=.exhentai.org';
-document.cookie='sk='+document.cookie.match(/panda_sk=([\da-z]+)/)[1]+';path=/;domain=.exhentai.org';
+document.cookie='sk='+(document.cookie.match(/panda_sk=([\da-z]+)/)?document.cookie.match(/panda_sk=([\da-z]+)/)[1]:'')+';path=/;domain=.exhentai.org';
 document.cookie='yay=0;path=/;domain=.exhentai.org';
 document.cookie='panda_sniff=;path=/;domain=.exhentai.org';
 };
@@ -167,7 +167,7 @@ if(!document.cookie.match(/panda_sniff=1/)){
 document.cookie='panda_user='+document.cookie.match(/ipb_member_id=(\d+)/)[1]+';path=/;domain=.exhentai.org';
 document.cookie='panda_pass='+document.cookie.match(/ipb_pass_hash=([\da-z]{32})/)[1]+';path=/;domain=.exhentai.org';
 document.cookie='panda_igneous='+document.cookie.match(/igneous=([\da-z]+)/)[1]+';path=/;domain=.exhentai.org';
-document.cookie='panda_sk='+document.cookie.match(/sk=([\da-z]+)/)[1]+';path=/;domain=.exhentai.org';
+document.cookie='panda_sk='+(document.cookie.match(/sk=([\da-z]+)/)?document.cookie.match(/sk=([\da-z]+)/)[1]:'')+';path=/;domain=.exhentai.org';
 document.cookie='yay=0;path=/;domain=.exhentai.org';
 document.cookie='panda_sniff=1;path=/;domain=.exhentai.org';
 };
@@ -205,7 +205,6 @@ var panda_lang_q005=panda_zhcn?'嗅探缓存已清理':'Sniff cache purged';
 var panda_width=document.cookie.match(/panda_width=[\d]+/)?document.cookie.match(/panda_width=(\d+)/)[1]:720;
 var panda_orign=document.cookie.match(/panda_orign=true/)?true:false;
 var panda_sniff={};
-window.addEventListener('load',function(){panda_recookie();});
 window.addEventListener('beforeunload',function(){panda_recookie();});
 if(document.domain!='exhentai.org'){if(confirm(panda_lang_a002)){window.location.href='https://exhentai.org/favicon.ico';}}
 else if(document.getElementById('gdt') && !document.getElementById('panda_plus')){panda_plusfunc();}

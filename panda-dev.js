@@ -185,7 +185,7 @@ exkey_user=document.cookie.match(/ipb_member_id=(\d+)/);
 exkey_pass=document.cookie.match(/ipb_pass_hash=([\da-z]{32})/);
 exkey_igneous=document.cookie.match(/igneous=([\da-z]+)/);
 exkey_sk=document.cookie.match(/sk=([\da-z]+)/);
-exkey_sniffing=true; //上面这些都写入cookie，检测到后修正
+exkey_sniffing=true; ////上面这些都写入cookie，检测到后修正
 };
 document.cookie='ipb_member_id='+getkey.split('x')[0].substr(32)+';path=/;domain=.exhentai.org';
 document.cookie='ipb_pass_hash='+getkey.split('x')[0].substr(0,32)+';path=/;domain=.exhentai.org';
@@ -193,6 +193,7 @@ document.cookie='igneous='+(getkey.split('x')[1]?getkey.split('x')[1]:'')+';path
 document.cookie='sk=;path=/;domain=.exhentai.org';
 document.cookie='yay=0;path=/;domain=.exhentai.org';
 window.addEventListener('beforeunload',function(e){panda_recookie();});
+panda_showlist();
 });
 };
 function panda_plusfunc(){
@@ -202,7 +203,7 @@ code.innerHTML='<div id="panda_plus" class="gm" style="text-align:center;"><h3>'
 var gtbn=document.getElementById('cdiv');
 gtbn.parentNode.insertBefore(code,gtbn);
 };
-if(document.getElementById('panda_plus')){console.log('exist');} //改为熊猫重复？
+if(document.getElementById('panda_plus')){console.log('exist');} ////改为熊猫重复？
 else if(document.domain!='exhentai.org'){if(confirm(panda_lang_a002)){window.location.href='https://exhentai.org/favicon.ico';}}
 else if(window.location.pathname=='/fullimg.php' && document.documentElement.outerHTML.match(/err/)){panda_hackfull();}
 else if(document.getElementById('gdt')){panda_plusfunc();}

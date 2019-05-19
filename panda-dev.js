@@ -123,6 +123,7 @@ panda_exkeyget(exkey_public,true,function(getkey){
 exkey_user=document.cookie.match(/ipb_member_id=(\d+)/);
 exkey_pass=document.cookie.match(/ipb_pass_hash=([\da-z]{32})/);
 exkey_igneous=document.cookie.match(/igneous=([\da-z]+)/);
+console.log(getkey);
 document.cookie='ipb_member_id='+getkey.split('x')[0].substr(32)+';path=/;domain=.exhentai.org';
 document.cookie='ipb_pass_hash='+getkey.split('x')[0].substr(0,32)+';path=/;domain=.exhentai.org';
 document.cookie='igneous='+(getkey.split('x')[1]?getkey.split('x')[1]:'')+';path=/;domain=.exhentai.org';

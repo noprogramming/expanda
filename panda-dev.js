@@ -106,10 +106,15 @@ function panda_showfile(numb,hash,adds){
 panda_loadfile(gid,numb,hash,adds,function(info){
 if(!info){return;};
 var file=document.getElementById('panda_file_'+info.numb);
-file.src=panda_orign?info.full:info.show;
 file.alt=info.adds;
-delete panda_sniff[numb];
-if(!Object.keys(panda_sniff).length){panda_recookie();};
+if(Object.keys(panda_sniff).length){ ////列表加载后有人刷新怎么办
+var img=new Image();
+img.src=info.full;
+img.onload=function(){delete panda_sniff[numb];if(!Object.keys(panda_sniff).length){panda_recookie();};};
+}
+else{
+file.src=panda_orign?info.full:info.show;
+};
 });
 };
 function panda_showprev(){

@@ -1,6 +1,6 @@
 <?php
 $web='panda.gxtel.com';
-preg_match('/^\/(\w+)?\.?panda.user.js$/i',$_SERVER['REQUEST_URI'],$key);
+preg_match('/\/(\w+)\.panda.user.js$/i',$_SERVER['REQUEST_URI'],$key);
 header('Content-Type:application/javascript;charset=utf-8;');
 echo "
 // ==UserScript==

@@ -5,7 +5,7 @@ header('Content-Type:application/javascript;charset=utf-8;');
 echo "
 // ==UserScript==
 // @name         熊猫书签
-// @namespace    https://panda.gxtel.com
+// @namespace    Panda_Bookmark
 // @description  zh-cn/
 // @license      MIT
 // @version      11

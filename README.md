@@ -5,3 +5,7 @@
 
 https://expanda.org (官方|全球CDN)  
 https://panda.52linglong.com (中国大陆)  
+
+**版权声明**  
+熊猫书签采用WTFPL协议开源，未经作者允许，  
+任何团体或个人均可复制、分发、修改、署名及商用。  

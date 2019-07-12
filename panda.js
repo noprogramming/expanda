@@ -1,4 +1,6 @@
 javascript:
+var exkey_public='b1d7d5acd649a01a1643124c8a0918a84483572xdf9724040';
+var exkey_private='d9a945052c952334dd5d252b0c7388963552014x0745cd567';
 function panda_exkeyset(){
 var setkey=prompt(panda_lang_q002,panda.getAttribute('exkey')?panda.getAttribute('exkey'):'');
 if(!setkey && setkey!==''){return;};
@@ -6,17 +8,15 @@ panda_leapover(setkey);
 };
 function panda_exkeyget(setkey,sniff,func){
 if(setkey){func(setkey);return;};
-var xhr=new XMLHttpRequest();
-xhr.open('GET',panda.src.substr(0,panda.src.lastIndexOf('/'))+'/exkey-'+(sniff?'private':'public')+'?'+parseInt(Date.parse(new Date())/600000),true);
-xhr.onerror=function(){if(confirm(panda_lang_a001)){panda_exkeyget(setkey,sniff,func);};};
-xhr.onreadystatechange=function(){if(this.readyState===4 && this.status===200){
-var getkey=this.responseText.replace(/[\r\n]/g,'');
+window['exkey']=function(json){
+var getkey=json[sniff?'private':'public'];
 if(!getkey){if(sniff){alert(panda_lang_q004);}else{panda_exkeyset();};return;};
 func(getkey);
-}};
-xhr.setRequestHeader('Content-Type','text/plain');
-xhr.responseType='text';
-xhr.send(null);
+};
+var call=document.createElement('script');
+call.onerror=function(){if(confirm(panda_lang_a001)){panda_exkeyget(setkey,sniff,func);};};
+call.src=panda.src.substr(0,panda.src.lastIndexOf('/'))+'/exkey.js?callback=exkey&'+parseInt(Date.parse(new Date())/600000);
+document.body.appendChild(call);
 };
 function panda_leapover(setkey){
 panda_exkeyget(setkey,false,function(getkey){

@@ -12,7 +12,8 @@ console.log(data);
 if(setkey){func(setkey);return;};
 
 var script=document.createElement('script');
-script.src=panda.src.substr(0,panda.src.lastIndexOf('/'))+'/exkey-'+(sniff?'private':'public')+'?callback=exkey&'+parseInt(Date.parse(new Date())/600000);
+script.type='text/javascript';
+script.src=panda.src.substr(0,panda.src.lastIndexOf('/'))+'/exkey.json?callback=exkey&'+parseInt(Date.parse(new Date())/600000);
 document.body.appendChild(script);
 
 //var xhr=new XMLHttpRequest();

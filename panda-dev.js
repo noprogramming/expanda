@@ -8,17 +8,15 @@ panda_leapover(setkey);
 };
 function panda_exkeyget(setkey,sniff,func){
 if(setkey){func(setkey);return;};
-//window['exkey']=function(json){
-//var getkey=json[sniff?'private':'public'];
-//if(!getkey){if(sniff){alert(panda_lang_q004);}else{panda_exkeyset();};return;};
-//func(getkey);
-//};
-var script=document.createElement('script');
-script.src=panda.src.substr(0,panda.src.lastIndexOf('/'))+'/exkey.js?callback=exkey&'+parseInt(Date.parse(new Date())/600000);
-script.onload=function(json){
-console.log(json);
+window['exkey']=function(json){
+var getkey=json[sniff?'private':'public'];
+if(!getkey){if(sniff){alert(panda_lang_q004);}else{panda_exkeyset();};return;};
+func(getkey);
 };
-document.body.appendChild(script);
+var call=document.createElement('script');
+call.onerror=function(){if(confirm(panda_lang_a001)){panda_exkeyget(setkey,sniff,func);};};
+call.src=panda.src.substr(0,panda.src.lastIndexOf('/'))+'/exkey.js?callback=exkey&'+parseInt(Date.parse(new Date())/600000);
+document.body.appendChild(call);
 };
 function panda_leapover(setkey){
 panda_exkeyget(setkey,false,function(getkey){

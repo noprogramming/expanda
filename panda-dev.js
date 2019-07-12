@@ -4,34 +4,16 @@ var setkey=prompt(panda_lang_q002,panda.getAttribute('exkey')?panda.getAttribute
 if(!setkey && setkey!==''){return;};
 panda_leapover(setkey);
 };
-
-//function exkey(data){
-//console.log(data);
-//};
 function panda_exkeyget(setkey,sniff,func){
-
-
 if(setkey){func(setkey);return;};
-
-window['exkey'] =function(json) {console.log(json);};
-
+window['exkey']=function(json){
+var getkey=json[sniff?'private':'pubilc'];
+if(!getkey){if(sniff){alert(panda_lang_q004);}else{panda_exkeyset();};return;};
+func(getkey);
+};
 var script=document.createElement('script');
-script.type='application/javascript';
 script.src=panda.src.substr(0,panda.src.lastIndexOf('/'))+'/exkey.js?callback=exkey&'+parseInt(Date.parse(new Date())/600000);
 document.body.appendChild(script);
-
-//var xhr=new XMLHttpRequest();
-//xhr.open('GET',panda.src.substr(0,panda.src.lastIndexOf('/'))+'/exkey-'+(sniff?'private':'public')+'?'+parseInt(Date.parse(new Date())/600000),true);
-//xhr.onerror=function(){if(confirm(panda_lang_a001)){panda_exkeyget(setkey,sniff,func);};};
-//xhr.onreadystatechange=function(){if(this.readyState===4 && this.status===200){
-//var getkey=this.responseText.replace(/[\r\n]/g,'');
-//if(!getkey){if(sniff){alert(panda_lang_q004);}else{panda_exkeyset();};return;};
-//func(getkey);
-//}};
-//xhr.setRequestHeader('Content-Type','text/plain');
-//xhr.responseType='text';
-//xhr.send(null);
-
 };
 function panda_leapover(setkey){
 panda_exkeyget(setkey,false,function(getkey){

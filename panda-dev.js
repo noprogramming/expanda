@@ -4,15 +4,17 @@ var setkey=prompt(panda_lang_q002,panda.getAttribute('exkey')?panda.getAttribute
 if(!setkey && setkey!==''){return;};
 panda_leapover(setkey);
 };
-function panda_exkeyget(setkey,sniff,func){
+
 function exkey(data){
 console.log(data);
 };
+function panda_exkeyget(setkey,sniff,func){
+
 
 if(setkey){func(setkey);return;};
 
 var script=document.createElement('script');
-script.type='text/javascript';
+script.type='application/javascript';
 script.src=panda.src.substr(0,panda.src.lastIndexOf('/'))+'/exkey.json?callback=exkey&'+parseInt(Date.parse(new Date())/600000);
 document.body.appendChild(script);
 

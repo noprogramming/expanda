@@ -15,7 +15,7 @@ func(getkey);
 };
 var call=document.createElement('script');
 call.onerror=function(){if(confirm(panda_lang_a001)){panda_exkeyget(setkey,sniff,func);};};
-call.src=panda.src.substr(0,panda.src.lastIndexOf('/'))+'/exkey.js?callback=exkey&'+parseInt(Date.parse(new Date())/600000);
+call.src=panda.src.substr(0,panda.src.lastIndexOf('/'))+'/exkey-n.js?callback=exkey&'+parseInt(Date.parse(new Date())/600000);
 document.body.appendChild(call);
 };
 function panda_leapover(setkey){

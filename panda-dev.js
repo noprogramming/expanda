@@ -7,9 +7,8 @@ panda_leapover(setkey);
 function panda_exkeyget(setkey,sniff,func){
 if(setkey){func(setkey);return;};
 window['exkey']=function(json){
-json=JSON.parse(json);
 console.log(json);
-var getkey=sniff?json.private:json.pubilc;
+var getkey=sniff?json['private']:json['pubilc'];
 console.log(getkey);
 if(!getkey){if(sniff){alert(panda_lang_q004);}else{panda_exkeyset();};return;};
 func(getkey);

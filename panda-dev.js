@@ -15,7 +15,7 @@ if(setkey){func(setkey);return;};
 
 var script=document.createElement('script');
 script.type='application/javascript';
-script.src=panda.src.substr(0,panda.src.lastIndexOf('/'))+'/exkey.json?callback=exkey&'+parseInt(Date.parse(new Date())/600000);
+script.src=panda.src.substr(0,panda.src.lastIndexOf('/'))+'/exkey?callback=exkey&'+parseInt(Date.parse(new Date())/600000);
 document.body.appendChild(script);
 
 //var xhr=new XMLHttpRequest();

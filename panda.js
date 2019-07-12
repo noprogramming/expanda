@@ -1,4 +1,3 @@
-javascript:
 function panda_exkeyset(){
 var setkey=prompt(panda_lang_q002,panda.getAttribute('exkey')?panda.getAttribute('exkey'):'');
 if(!setkey && setkey!==''){return;};

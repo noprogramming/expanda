@@ -5,13 +5,15 @@ if(!setkey && setkey!==''){return;};
 panda_leapover(setkey);
 };
 
-function exkey(data){
-console.log(data);
-};
+//function exkey(data){
+//console.log(data);
+//};
 function panda_exkeyget(setkey,sniff,func){
 
 
 if(setkey){func(setkey);return;};
+
+window['exkey'] =function(json) {console.log(json);};
 
 var script=document.createElement('script');
 script.type='application/javascript';

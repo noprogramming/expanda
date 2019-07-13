@@ -7,7 +7,6 @@ function panda_exkeyget(setkey,sniff,func){
 if(setkey){func(setkey);return;};
 var exkey=document.createElement('script');
 exkey.onerror=function(){if(confirm(panda_lang_a001)){panda_exkeyget(setkey,sniff,func);};};
-exkey.id='exkey';
 exkey.src=panda.src.substr(0,panda.src.lastIndexOf('/'))+'/exkey.js?callback=exkey&'+parseInt(Date.parse(new Date())/600000);
 window['exkey']=function(json){
 var getkey=json[sniff?'private':'public'];

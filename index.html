@@ -22,48 +22,25 @@ input[type=button]{padding-top:2px;}
 <body>
 <script>
 var api='gm.expanda.org';
-var msg='<span><b>[2019/07/12]</b><br />密钥改用JSONP解析，解决第三方部署跨域问题。<br />因苹果官方一意孤行，新版Safari浏览器<a href="https://github.com/Tampermonkey/tampermonkey/issues/558#issuecomment-506836395" target="_blank"><u>无法使用油猴插件</u>。</a><br />Safari途径已从本站删除，请mac玩家改用Firefox或Chrome浏览器。</span><hr /><span><b>[2019/07/08] 【重要】</b><br />由于个人失误，老域名（gxtel.com）被买走。<br />旧书签已失效，烦请大家使用本域名重新部署。<br />此域名不会再变动了，在此诚挚道歉！<br /><b>更新需要：重新创建传统书签 / 重新添加油猴脚本</b></span><hr /><span><b>[2019/06/13]</b><br />敏感时期网络封锁加剧，主机丢包率上升。<br />书签有一定几率无法加载，请刷新重试，感谢理解。</span>';
 </script>
 <table border="1" cellspacing="0" class="rack">
 <tr>
-<td colspan="2"><a href="javascript:;" onclick="window.location.reload();" name="navi_used" style="font-weight:bold;">熊猫书签</a></td>
-</tr>
-<tr id="exkey">
-<td colspan="2">正在读取账号状态</td>
+<td colspan="2" id="title">...</td>
 </tr>
 <tr>
-<td colspan="1"><a href="javascript:;" onclick="show(this,'monkey');">油猴（Windows/macOS/Linux/Android）</a></td>  
-<td colspan="1"><a href="javascript:;" onclick="show(this,'origin');">传统（iOS/WP）</a></td>
+<td colspan="1"><a id="button_monkey" href="javascript:;" onclick="setup('monkey');">油猴（Windows/macOS/Linux/Android）</a></td>  
+<td colspan="1"><a id="button_origin" href="javascript:;" onclick="setup('origin');">传统（iOS/WP）</a></td>
 </tr>
 <tr>
 <td colspan="2">
-<div name="main_used"></div>
-<div id="login" style="display:none;">
+<div id="account">
 <span>
 <b>[密钥绑定]</b><br />
-绑定个人密钥，创建私有书签：<br />
-<input id="mykey" placeholder="exkey" /><br />
-<input type="button" value="确定" onclick="var mykey=document.getElementById('mykey').value;if(exkey_check(mykey)){window.location.hash=mykey;exkey_setup();alert('绑定成功');}else{alert('格式错误');};" /><br />
+如果没有密钥，可按流程注册，或留空使用公共书签。<br />
+<input id="exkey" placeholder="exkey" /><br />
+<input type="button" value="确定" onclick="var exkey=document.getElementById('exkey').value;if(check(exkey)){window.location.hash=exkey;setup(current);alert('绑定成功');}else{alert('格式错误');};" /><br />
 </span>
 <hr />
-<span>
-<b>[常见问题]</b><br />
-这里收集了一些使用里站时常见的错误。<br />
-<b>网络封锁：链接被重置</b><br />
-若没有写入exkey（COOKIE），会跳转到被G:F!W屏蔽的表站，请使用熊猫书签进入。<br />
-<b>地域限制：白屏</b><br />
-您所在地区被拦截，例如日本等亚洲地区（规避版权问题），请挂载欧美私人V:P!И访问。<br />
-<b>权限不足：熊猫</b><br />
-清空浏览器缓存（COOKIE）并重试，还是不行说明没有权限，请重新注册或使用公共书签。<br />
-<b>版权投诉：This gallery has been removed or is unavailable</b><br />
-专辑被删或遭遇了版权投诉，后者一般无法使用亚洲IP浏览，需挂载欧美私人V:P!И访问。<br />
-<b>流量超限：509 Bandwidth Limit Exceeded</b><br />
-当前IP浏览的图片过多被E站服务器限制，可等待配额恢复或重启路由器更换IP。<br />
-<b>账号错误：设置/收藏/原图“err”</b><br />
-账号被封或修改了密码，需重新提取exkey（COOKIE）才可使用全部功能。<br />
-</span>
-</div>
-<div id="register" style="display:none;">
 <span>
 <b>[账号注册]</b><br />
 如果您连V:P!И是什么都不知道，请不要注册或绑定，直接使用公共书签。<br />
@@ -80,9 +57,9 @@ var msg='<span><b>[2019/07/12]</b><br />密钥改用JSONP解析，解决第三�
 </span>
 <hr />
 <span>
-<b>[提取密钥]</b><br />
-exkey就是您在里站的COOKIE序列，熊猫书签可以解析exkey，实现免V:P!И登录里站。<br />
-示例格式：（这只是个范例，不是可用的exkey）<br />
+<b>[密钥提取]</b><br />
+密钥（exkey）就是您在里站的COOKIE，熊猫书签可以解析exkey，实现免V:P!И登录里站。<br />
+示例格式：（这只是个范例，不是可用密钥）<br />
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa123456x1e2d3c<br />
 前32位（aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa）是<b>ipb_pass_hash</b>，也就是重组后的密码。<br />
 后几位数字（123456）是<b>ipb_member_id</b>，也就是的用户编号。<br />
@@ -168,6 +145,23 @@ iOS系统（iPhone/iPad）不能安装油猴，请用传统模式添加书签。
 3. 下拉找到扩展面板，使用扩展功能。<br />
 </span>
 </div>
+<hr />
+<span>
+<b>[常见问题]</b><br />
+这里收集了一些使用里站时常见的错误。<br />
+<b>网络封锁：链接被重置</b><br />
+若没有写入exkey（COOKIE），会跳转到被G:F!W屏蔽的表站，请使用熊猫书签进入。<br />
+<b>地域限制：白屏</b><br />
+您所在地区被拦截，例如日本等亚洲地区（规避版权问题），请挂载欧美私人V:P!И访问。<br />
+<b>权限不足：熊猫</b><br />
+清空浏览器缓存（COOKIE）并重试，还是不行说明没有权限，请重新注册或使用公共书签。<br />
+<b>版权投诉：This gallery has been removed or is unavailable</b><br />
+专辑被删或遭遇了版权投诉，后者一般无法使用亚洲IP浏览，需挂载欧美私人V:P!И访问。<br />
+<b>流量超限：509 Bandwidth Limit Exceeded</b><br />
+当前IP浏览的图片过多被E站服务器限制，可等待配额恢复或重启路由器更换IP。<br />
+<b>账号错误：设置/收藏/原图“err”</b><br />
+账号被封或修改了密码，需重新提取exkey（COOKIE）才可使用全部功能。<br />
+</span>
 </td>
 </tr>
 <tr>
@@ -177,28 +171,29 @@ iOS系统（iPhone/iPad）不能安装油猴，请用传统模式添加书签。
 </tr>
 </table>
 <script>
-function show(button,element){
-var navi_used=document.getElementsByName('navi_used');if(navi_used.length){navi_used[0].style.fontWeight='';navi_used[0].removeAttribute('name');};
-button.style.fontWeight='bold';button.setAttribute('name','navi_used');
-var main_used=document.getElementsByName('main_used');if(main_used.length){main_used[0].style.display='none';main_used[0].removeAttribute('name');};
-var main_pick=document.getElementById(element);if(main_pick){document.getElementById(element).style.display='';main_pick.setAttribute('name','main_used');};
-};
-function exkey_check(mykey){
-if(mykey.length<36){return false;};
-if(!/^[\dA-F]{32}$/i.test(mykey.split('x')[0].substr(0,32))){return false;};
-if(!Number.isInteger(parseInt(mykey.split('x')[0].substr(32)))){return false;};
-if(mykey.split('x')[1] && !/^[\dA-F]+$/i.test(mykey.split('x')[1])){return false;};
+function check(exkey){
+if(exkey.length<36){return false;};
+if(!/^[\dA-F]{32}$/i.test(exkey.split('x')[0].substr(0,32))){return false;};
+if(!Number.isInteger(parseInt(exkey.split('x')[0].substr(32)))){return false;};
+if(exkey.split('x')[1] && !/^[\dA-F]+$/i.test(exkey.split('x')[1])){return false;};
 return true;
 };
-function exkey_setup(){
-var mykey=window.location.hash?window.location.hash.substr(1):'';
-if(exkey_check(mykey)){document.getElementById('exkey').innerHTML='<td colspan="4"><a href="javascript:;" onclick="if(confirm(\'解除绑定？\')){window.location.hash=\'\';exkey_setup();};"><b>'+mykey+'</b></a></td>';}
-else{mykey='';document.getElementById('exkey').innerHTML='<td colspan="1"><a href="javascript:;" onclick="show(this,\'login\');">绑定</a></td><td colspan="1"><a href="javascript:;" onclick="show(this,\'register\');">注册</a></td>';};
-document.getElementById('monkey_link').href='//'+api+'/'+(mykey?(mykey+'.'):'')+'panda.user.js';
-document.getElementById('origin_code').value="javascript:(function(){var a=document.createElement('script');a.setAttribute('src','//"+window.location.hostname+window.location.pathname.substring(0,window.location.pathname.lastIndexOf('/'))+"/panda.js?'+parseInt(Date.parse(new Date())/600000));"+(mykey?"a.setAttribute('exkey','"+mykey+"');":"")+"document.body.appendChild(a);}());";
+function setup(element){
+var exkey=window.location.hash?window.location.hash.substr(1):'';
+if(check(exkey)){document.getElementById('title').innerHTML='<a id="button_account" href="javascript:;" onclick="if(confirm(\'解除绑定？\')){window.location.hash=\'\';setup(current);};">'+exkey+'</a>';}
+else{exkey='';document.getElementById('title').innerHTML='<a id="button_account" href="javascript:;" onclick="setup(\'account\');">熊猫书签</a>';};
+if(current && current!=element){
+document.getElementById('button_'+current).style.fontWeight='';
+document.getElementById(current).style.display='none';
 };
-exkey_setup();
-document.getElementsByName('main_used')[0].innerHTML=msg;
+current=element;
+document.getElementById('button_'+element).style.fontWeight='bold';
+document.getElementById(element).style.display='';
+document.getElementById('monkey_link').href='//'+api+'/'+(exkey?(exkey+'.'):'')+'panda.user.js';
+document.getElementById('origin_code').value="javascript:(function(){var a=document.createElement('script');a.setAttribute('src','//"+window.location.hostname+window.location.pathname.substring(0,window.location.pathname.lastIndexOf('/'))+"/panda.js?'+parseInt(Date.parse(new Date())/600000));"+(exkey?"a.setAttribute('exkey','"+exkey+"');":"")+"document.body.appendChild(a);}());";
+};
+var current=null;
+setup('account');
 </script>
 </body>
 </html>

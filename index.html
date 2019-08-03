@@ -20,13 +20,6 @@ input[type=button]{padding-top:2px;}
 </style>
 </head>
 <body>
-<script>
-var api='gm.expanda.org';
-</script>
-<center>
-<div><b>【重要消息】E站可能倒闭了，所以这个书签暂时也用不了。详情关注各Q群或北+，感谢大家一路的支持！</b></div>
-<div>部分数据存档可查阅：<a href="https://e-hentaidb.com" target="_blank">https://e-hentaidb.com</a></div>
-</center><br />
 <table border="1" cellspacing="0" class="rack">
 <tr>
 <td colspan="2" id="title">...</td>
@@ -79,47 +72,27 @@ x之后（1e2d3c）是<b>igneous</b>，一个有用的校验码。<br />
 </div>
 <div id="monkey" style="display:none;">
 <span>
-<b>[兼容检查]</b><br />
-油猴脚本可运行于以下浏览器，如果您的设备没有请下载安装：<br />
-<a href="https://www.google.cn/chrome/" target="_blank"><u><b>Chrome</b></u></a>（Windows/macOS/Linux/Android）<br />
-<a href="https://www.mozilla.org/firefox/" target="_blank"><u><b>Firefox</b></u></a>（Windows/macOS/Linux/Android）<br />
-<a href="https://www.microsoft.com/zh-cn/windows/microsoft-edge" target="_blank"><u><b>Edge</b></u></a>（Windows）<br />
-iOS系统（iPhone/iPad）不能安装油猴，请用传统模式添加书签。<br />
-</span>
-<hr />
-<span>
 <b>[安装插件]</b><br />
 请根据您的浏览器类型，安装 Tampermonkey 插件：<br />
-<a href="https://www.softpedia.com/get/Internet/Internet-Applications-Addons/Chrome-Extensions/Tampermonkey.shtml#download" target="_blank"><u><b>Chrome</b></u></a><br />
-<a href="https://addons.mozilla.org/firefox/addon/tampermonkey/" target="_blank"><u><b>Firefox</b></u></a><br />
-<a href="https://www.microsoft.com/store/apps/9NBLGGH5162S" target="_blank"><u><b>Edge</b></u></a><br />
-如果您使用的是国产浏览器，也可以尝试安装 Chrome 插件。<br />
+<a href="https://www.softpedia.com/get/Internet/Internet-Applications-Addons/Chrome-Extensions/Tampermonkey.shtml#download" target="_blank"><u><b>Chrome</b></u></a>（<a href="https://www.google.cn/chrome/" target="_blank"><u><b>下载浏览器</b></u></a>）<br />
+<a href="https://addons.mozilla.org/firefox/addon/tampermonkey/" target="_blank"><u><b>Firefox</b></u></a>（<a href="https://www.mozilla.org/firefox/" target="_blank"><u><b>下载浏览器</b></u></a>）<br />
+<a href="https://www.microsoft.com/store/apps/9NBLGGH5162S" target="_blank"><u><b>Edge</b></u></a>（<a href="https://www.microsoft.com/zh-cn/windows/microsoft-edge" target="_blank"><u><b>下载浏览器</b></u></a>）<br />
+没有以上浏览器请先安装，iOS系统不能使用油猴。<br />
 </span>
 <hr />
 <span>
 <b>[添加脚本]</b><br />
 为油猴插件添加熊猫书签脚本：<br />
 <a id="monkey_link" target="_blank"><u><b>点此下载安装</b></u></a><br />
-请确认油猴插件和熊猫书签脚本都已正确开启。<br />
 </span>
 <hr />
 <span>
 <b>[访问里站]</b><br />
 由于EH遭遇大陆屏蔽，请访问以下地址跳转：<br />
 <a href="http://e.exhentai.org" target="_blank"><u><b>e.exhentai.org</b></u></a><br />
-进入后熊猫书签的油猴脚本会自动挂载并生效。<br />
-如果无法访问请修改前缀“e”至任意字母并重试。<br />
 </span>
 </div>
 <div id="origin" style="display:none;">
-<span>
-<b>[兼容检查]</b><br />
-本方法适用于系统自带浏览器：<br />
-<b>Safari</b>（iOS）<br />
-<b>IE</b>（WP）<br />
-其他浏览器您也可以自行尝试。<br />
-</span>
-<hr />
 <span>
 <b>[复制代码]</b><br />
 全选并拷贝下面的代码：<br />
@@ -168,11 +141,6 @@ iOS系统（iPhone/iPad）不能安装油猴，请用传统模式添加书签。
 </span>
 </td>
 </tr>
-<tr>
-<td colspan="4">
-<a href="https://github.com/21126881/panda" target="_blank"><b>GitHub</b></a>
-</td>
-</tr>
 </table>
 <script>
 function check(exkey){
@@ -193,7 +161,7 @@ document.getElementById(current).style.display='none';
 current=element;
 document.getElementById('button_'+element).style.fontWeight='bold';
 document.getElementById(element).style.display='';
-document.getElementById('monkey_link').href='//'+api+'/'+(exkey?(exkey+'.'):'')+'panda.user.js';
+document.getElementById('monkey_link').href=(exkey?(exkey+'.'):'')+'panda.user.js';
 document.getElementById('origin_code').value="javascript:(function(){var a=document.createElement('script');a.setAttribute('src','//"+window.location.hostname+window.location.pathname.substring(0,window.location.pathname.lastIndexOf('/'))+"/panda.js?'+parseInt(Date.parse(new Date())/600000));"+(exkey?"a.setAttribute('exkey','"+exkey+"');":"")+"document.body.appendChild(a);}());";
 };
 var current=null;

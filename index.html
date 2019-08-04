@@ -25,8 +25,8 @@ input[type=button]{padding-top:2px;}
 <td colspan="2" id="title">...</td>
 </tr>
 <tr>
-<td colspan="1"><a id="button_monkey" href="javascript:;" onclick="setup('monkey');">油猴（Windows/macOS/Linux/Android）</a></td>  
-<td colspan="1"><a id="button_origin" href="javascript:;" onclick="setup('origin');">传统（iOS/WP）</a></td>
+<td colspan="1"><a id="button_monkey" href="javascript:;" onclick="setup('monkey');">油猴 Windows/macOS/Linux/Android</a></td>  
+<td colspan="1"><a id="button_origin" href="javascript:;" onclick="setup('origin');">传统 iOS/WP</a></td>
 </tr>
 <tr>
 <td colspan="2">
@@ -40,44 +40,39 @@ input[type=button]{padding-top:2px;}
 <hr />
 <span>
 <b>[账号注册]</b><br />
-如果您连V:P!И是什么都不知道，请不要注册或绑定，直接使用公共书签。<br />
-<b>注册地址</b>：<a href="https://forums.e-hentai.org/?act=Reg" target="_blank"><u>https://forums.e-hentai.org/?act=Reg</u></a><br />
-这个地址中国大陆无法访问，需要搭建<b>欧美私人V:P!И</b>后访问。一定要有<b>欧美私人IP</b>，不能多人共用同IP。<br />
-公共IP如果有人注册过，E站数据库会有记录，再有人注册会把两个账号都<b>拉黑</b>，永远无法获得里区权限。<br />
-使用<b>中国、日本等亚洲IP</b>注册的账户，也无法获得里区权限。务必选对V:P!И位置，用<b>欧美</b>地区节点。<br />
-注册前还要把<b>浏览器语言</b>改成<b>英语</b>，使用<b>中文、日文等语言浏览器</b>注册的账户，无法获得里区权限。<br />
-建议用Gmail邮箱注册，使用<b>新浪、搜狐、163、QQ等国内邮箱</b>注册的账户，无法获得里区权限。<br />
-注册过程就不多说了，请自己研究。确认键上面应该有个验证码，如果看不到请更换V:P!И。<br />
-注册完成等待一周左右时间，账号应该就能获得里区权限，可以参照以下过程登录了：<br />
-挂上<b>欧美私人V:P!И</b>，清空<b>浏览器COOKIE</b>，先<a href="https://e-hentai.org/bounce_login.php" target="_blank"><u><b>登录表站</b></u></a>，再<a href="https://exhentai.org" target="_blank"><u><b>访问里站</b></u></a>。<br />
-如果还出现熊猫，多等一周换个欧美V:P!И登录，再不行那就是凉了。<br />
+注册地址：<a href="https://forums.e-hentai.org/?act=Reg" target="_blank"><u>https://forums.e-hentai.org/?act=Reg</u></a><br />
+中国大陆无法访问，需要挂载<b>欧美V:P!И</b>。一定要有<b>私人IP</b>，不能多人共用同IP。<br />
+使用<b>亚洲IP</b>注册的账户，也无法获得里区权限。V:P!И务必选用<b>欧美</b>节点。<br />
+建议用Gmail邮箱注册，使用<b>163、QQ等国内邮箱</b>注册的账户无法获得权限。<br />
+注册过程就不多说了，确认时可能弹出验证码，如果看不到请更换V:P!И。<br />
+注册完成等待一周左右时间，账号应该就能获得里区权限，参照流程登录：<br />
+挂载<b>欧美V:P!И</b>，清空<b>浏览器COOKIE</b>，先<a href="https://e-hentai.org/bounce_login.php" target="_blank"><u><b>登录表站</b></u></a>，再<a href="https://exhentai.org" target="_blank"><u><b>访问里站</b></u></a>。<br />
+如果还出现熊猫，多等一周换个欧美V:P!И登录，再不行就是凉了。<br />
 </span>
 <hr />
 <span>
 <b>[密钥提取]</b><br />
-密钥（exkey）就是您在里站的COOKIE，熊猫书签可以解析exkey，实现免V:P!И登录里站。<br />
-示例格式：（这只是个范例，不是可用密钥）<br />
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa123456x1e2d3c<br />
-前32位（aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa）是<b>ipb_pass_hash</b>，也就是重组后的密码。<br />
-后几位数字（123456）是<b>ipb_member_id</b>，也就是的用户编号。<br />
-x是没有含义但必须要有的<b>分隔符</b>。<br />
-x之后（1e2d3c）是<b>igneous</b>，一个有用的校验码。<br />
-使用电脑浏览器，<b>按上节教程正常登录里站</b>。按下键盘F12，根据您的浏览器依次找到：<br />
+示例格式：aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa123456x1e2d3c<br />
+<b>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</b>是<b>ipb_pass_hash</b>。<br />
+<b>123456</b>是<b>ipb_member_id</b>。<br />
+<b>x</b>是解析所需的<b>分隔符</b>。<br />
+<b>1e2d3c</b>是<b>igneous</b>。<br />
+使用电脑浏览器，<b>按上节教程登录里站</b>。按下<b>F12</b>，找到COOKIE：<br />
 [Edge] Debug-Cookie-exhentai.org<br />
 [Chrome] Application-Cookies-exhentai.org<br />
 [Firefox] Storage-Cookies-exhentai.org<br />
-应该可以看到一个类似于列表的地方，复制<b>ipb_pass_hash</b>、<b>ipb_member_id</b>、<b>igneous</b>这三个变量的值。<br />
-然后按照上面的格式规范组合成exkey，把这串密钥保存好，以后就可以用了。<br />
+复制<b>ipb_pass_hash</b>、<b>ipb_member_id</b>、<b>igneous</b>这三个变量。<br />
+按照格式规范组合成exkey，把这串密钥保存好，以后就可以用了。<br />
 </span>
 </div>
 <div id="monkey" style="display:none;">
 <span>
 <b>[安装插件]</b><br />
-请根据您的浏览器类型，安装 Tampermonkey 插件：<br />
+请根据您的浏览器类型，安装油猴插件：<br />
 <a href="https://www.softpedia.com/get/Internet/Internet-Applications-Addons/Chrome-Extensions/Tampermonkey.shtml#download" target="_blank"><u><b>Chrome</b></u></a><br />
 <a href="https://addons.mozilla.org/firefox/addon/tampermonkey/" target="_blank"><u><b>Firefox</b></u></a><br />
 <a href="https://www.microsoft.com/store/apps/9NBLGGH5162S" target="_blank"><u><b>Edge</b></u></a><br />
-没有浏览器请安装<a href="https://www.mozilla.org/firefox/" target="_blank"><u>Firefox</u></a>，iOS系统不能使用油猴。<br />
+没有以上浏览器请安装<a href="https://www.mozilla.org/firefox/" target="_blank"><u>Firefox</u></a>，iOS请用传统书签。<br />
 </span>
 <hr />
 <span>
@@ -127,17 +122,13 @@ x之后（1e2d3c）是<b>igneous</b>，一个有用的校验码。<br />
 <b>[常见问题]</b><br />
 这里收集了一些使用里站时常见的错误。<br />
 <b>网络封锁：链接被重置</b><br />
-若没有写入exkey（COOKIE），会跳转到被G:F!W屏蔽的表站，请使用熊猫书签进入。<br />
+没有写入COOKIE，跳转到了被屏蔽的表站，请使用熊猫书签进入。<br />
 <b>地域限制：白屏</b><br />
-您所在地区被拦截，例如日本等地区（规避版权问题），请挂载欧美私人V:P!И访问。<br />
+您所在地区被拦截，例如规避日本版权投诉，请挂载欧美V:P!И访问。<br />
 <b>权限不足：熊猫</b><br />
-清空浏览器缓存（COOKIE）并重试，还是不行说明没有权限，请重新注册或使用公共书签。<br />
-<b>版权投诉：This gallery has been removed or is unavailable</b><br />
-专辑被删或遭遇了版权投诉，后者一般无法使用亚洲IP浏览，需挂载欧美私人V:P!И访问。<br />
+清空浏览器COOKIE并重试，还是不行说明没有权限，请使用公共书签。<br />
 <b>流量超限：509 Bandwidth Limit Exceeded</b><br />
-当前IP浏览的图片过多被E站服务器限制，可等待配额恢复或重启路由器更换IP。<br />
-<b>账号错误：设置/收藏/原图“err”</b><br />
-账号被封或修改了密码，需重新提取exkey（COOKIE）才可使用全部功能。<br />
+当前IP浏览的图片过多被E站限制，可等待配额恢复或重启路由器更换IP。<br />
 </span>
 </td>
 </tr>

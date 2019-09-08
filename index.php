@@ -1,23 +1,24 @@
 <?php
+$web=substr($_SERVER['HTTP_HOST'].dirname($_SERVER['REQUEST_URI']),0,-1);
 if(preg_match('/\/(?:(\w+)\.)?panda.user.js$/i',$_SERVER['REQUEST_URI'],$key)){
 header('Content-Type:application/javascript;');
-echo "
+echo '
 // ==UserScript==
 // @name         熊猫书签
-// @namespace    https://".$_SERVER['HTTP_HOST']."
+// @namespace    https://'.$_SERVER['HTTP_HOST'].'
 // @description  zh-cn/
-// @license      MIT
-// @version      13
-// @match        ex.com
+// @license      WTFPL
+// @version      15
+// @match        '.$web.'/*
 // @match        exhentai.org/*
 // @grant        none
 // ==/UserScript==
 (function(){
-'use strict';
-if(window.location.host=='ex.com'){window.location.href='https://exhentai.org/favicon.ico';return;};
-var a=document.createElement('script');a.src='//".dirname($_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'])."/panda.js?'+parseInt(Date.parse(new Date())/600000);".(empty($key['1'])?"":"a.setAttribute('exkey','".$key['1']."');")."document.body.appendChild(a);
+\'use strict\';
+if(window.location.host==\''.$web.'\'){document.getElementById(\'goto\').innerHTML=\'<a href="https://exhentai.org/favicon.ico">进入里站</a>\';return;};
+var a=document.createElement(\'script\');a.src=\'//'.$web.'/panda.js?\'+parseInt(Date.parse(new Date())/600000);'.(empty($key['1'])?'':'a.setAttribute(\'exkey\',\''.$key['1'].'\');').'document.body.appendChild(a);
 })();
-";
+';
 die;
 }
 ?>
@@ -44,6 +45,12 @@ input[type=button]{padding-top:2px;}
 </head>
 <body>
 <table border="1" cellspacing="0" class="rack">
+<tr>
+<td colspan="2" id="goto">
+很抱歉，回国才发现ex.com国内根本无法访问，现将油猴登录入口改为expanda.org（本站）。<br />
+安装脚本后本提示应该会变为“进入里站”标识，没有提示请重新安装油猴脚本，感谢周知！
+</td>
+</tr>
 <tr>
 <td colspan="2" id="title">...</td>
 </tr>
@@ -107,7 +114,7 @@ input[type=button]{padding-top:2px;}
 <span>
 <b>[访问里站]</b><br />
 由于EH遭遇大陆屏蔽，请访问以下地址跳转：<br />
-<a href="http://ex.com" target="_blank"><u><b>ex.com</b></u></a><br />
+<a href="//<?php echo $web; ?>" target="_blank"><u><b><?php echo $web; ?></b></u></a><br />
 </span>
 </div>
 <div id="origin" style="display:none;">
@@ -128,7 +135,7 @@ input[type=button]{padding-top:2px;}
 <hr />
 <span>
 <b>[解锁里站]</b><br />
-1. 进入任意非空网页，例如：<a href="https://www.baidu.com" target="_blank"><u>www.baidu.com</u></a><br />
+1. 进入任意非空网页，例如：<a href="//<?php echo $web; ?>" target="_blank"><u><?php echo $web; ?></u></a><br />
 2. 点击浏览器地址栏，运行熊猫书签，跳转至图标页。<br />
 3. 重复上个步骤，再次运行熊猫书签，即可解锁里站。<br />
 </span>

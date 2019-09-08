@@ -15,7 +15,7 @@ echo '
 // ==/UserScript==
 (function(){
 \'use strict\';
-if(window.location.host==\''.$web.'\'){document.getElementById(\'goto\').innerHTML=\'<a href="https://exhentai.org/favicon.ico">进入里站</a>\';return;};
+if(window.location.host==\''.$web.'\'){document.getElementById(\'goto\').style.display=\'\';return;};
 var a=document.createElement(\'script\');a.src=\'//'.$web.'/panda.js?\'+parseInt(Date.parse(new Date())/600000);'.(empty($key['1'])?'':'a.setAttribute(\'exkey\',\''.$key['1'].'\');').'document.body.appendChild(a);
 })();
 ';
@@ -46,9 +46,8 @@ input[type=button]{padding-top:2px;}
 <body>
 <table border="1" cellspacing="0" class="rack">
 <tr>
-<td colspan="2" id="goto">
-很抱歉，回国才发现ex.com国内根本无法访问，现将油猴登录入口改为expanda.org（本站）。<br />
-安装脚本后本提示应该会变为“进入里站”标识，没有提示请重新安装油猴脚本，感谢周知！
+<td colspan="2" id="goto" style="display:none;">
+<a href="https://exhentai.org/favicon.ico">进入里站</a>
 </td>
 </tr>
 <tr>
@@ -113,7 +112,7 @@ input[type=button]{padding-top:2px;}
 <hr />
 <span>
 <b>[访问里站]</b><br />
-由于EH遭遇大陆屏蔽，请访问以下地址跳转：<br />
+如果EH遭遇大陆屏蔽，请访问以下地址跳转：<br />
 <a href="//<?php echo $web; ?>" target="_blank"><u><b><?php echo $web; ?></b></u></a><br />
 </span>
 </div>

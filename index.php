@@ -55,7 +55,7 @@ input[type=button]{padding-top:2px;}
 <td colspan="2" id="title">...</td>
 </tr>
 <tr>
-<td colspan="1"><a id="button_monkey" href="javascript:;" onclick="setup('monkey');">油猴 Windows Mac Android</a></td>
+<td colspan="1"><a id="button_monkey" href="javascript:;" onclick="setup('monkey');">油猴 PC Android</a></td>
 <td colspan="1"><a id="button_origin" href="javascript:;" onclick="setup('origin');">传统 iOS</a></td>
 </tr>
 <tr>

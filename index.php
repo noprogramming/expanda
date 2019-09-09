@@ -111,9 +111,9 @@ input[type=button]{padding-top:2px;}
 </span>
 <hr />
 <span>
-<b>[访问里站]</b><br />
-如果EH遭遇大陆屏蔽，请访问以下地址跳转：<br />
-<a href="//<?php echo $web; ?>" target="_blank"><u><b><?php echo $web; ?></b></u></a><br />
+<b>[解锁里站]</b><br />
+https访问：<a href="https://exhentai.org" target="_blank"><u><b>https://exhentai.org</b></u></a><br />
+备用方法：访问本站，点击顶部“进入里站”。<br />
 </span>
 </div>
 <div id="origin" style="display:none;">
@@ -134,9 +134,9 @@ input[type=button]{padding-top:2px;}
 <hr />
 <span>
 <b>[解锁里站]</b><br />
-1. 进入任意非空网页，例如：<a href="//<?php echo $web; ?>" target="_blank"><u><?php echo $web; ?></u></a><br />
-2. 点击浏览器地址栏，运行熊猫书签，跳转至图标页。<br />
-3. 重复上个步骤，再次运行熊猫书签，即可解锁里站。<br />
+https访问：<a href="https://exhentai.org" target="_blank"><u><b>https://exhentai.org</b></u></a><br />
+点击浏览器地址栏，运行熊猫书签。<br />
+备用方法：访问任意网页，运行熊猫书签，跳转至图标页，再次运行熊猫书签。<br />
 </span>
 <hr />
 <span>

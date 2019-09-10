@@ -8,15 +8,15 @@ echo '
 // @namespace    https://'.$_SERVER['HTTP_HOST'].'
 // @description  zh-cn/
 // @license      WTFPL
-// @version      15
+// @version      16
 // @match        '.$web.'/*
 // @match        exhentai.org/*
 // @grant        none
 // ==/UserScript==
 (function(){
 \'use strict\';
-if(window.location.host==\''.$web.'\'){document.getElementById(\'goto\').style.display=\'\';return;};
-var a=document.createElement(\'script\');a.src=\'//'.$web.'/panda.js?\'+parseInt(Date.parse(new Date())/600000);'.(empty($key['1'])?'':'a.setAttribute(\'exkey\',\''.$key['1'].'\');').'document.body.appendChild(a);
+if(window.location.hostname==\'exhentai.org\'){var a=document.createElement(\'script\');a.src=\'//'.$web.'/panda.js?\'+parseInt(Date.parse(new Date())/600000);'.(empty($key['1'])?'':'a.setAttribute(\'exkey\',\''.$key['1'].'\');').'document.body.appendChild(a);}
+else if(document.getElementById(\'goto\')){document.getElementById(\'goto\').style.display=\'\';};
 })();
 ';
 die;
@@ -112,8 +112,7 @@ input[type=button]{padding-top:2px;}
 <hr />
 <span>
 <b>[解锁里站]</b><br />
-https访问：<a href="https://exhentai.org" target="_blank"><u><b>https://exhentai.org</b></u></a><br />
-备用方法：访问本站，点击顶部“进入里站”。<br />
+访问本页面，点击顶部“进入里站”。<br />
 </span>
 </div>
 <div id="origin" style="display:none;">
@@ -125,25 +124,23 @@ https访问：<a href="https://exhentai.org" target="_blank"><u><b>https://exhen
 <hr />
 <span>
 <b>[创建书签]</b><br />
-1. 把本页添加至书签。<br />
-2. 点击浏览器地址栏。<br />
-3. 找到刚才添加的书签，长按，编辑。<br />
-4. 使用刚才复制的代码，替换原有地址。<br />
-5. 保存书签。<br />
+把本页添加至书签。<br />
+点击浏览器地址栏。<br />
+找到刚才添加的书签，长按，编辑。<br />
+使用刚才复制的代码，替换原有地址。<br />
 </span>
 <hr />
 <span>
 <b>[解锁里站]</b><br />
-https访问：<a href="https://exhentai.org" target="_blank"><u><b>https://exhentai.org</b></u></a><br />
-点击浏览器地址栏，运行熊猫书签。<br />
-备用方法：访问任意网页，运行熊猫书签，跳转至图标页，再次运行熊猫书签。<br />
+访问本页面，点击地址栏，运行熊猫书签。<br />
+跳转图标页，再次运行熊猫书签。<br />
 </span>
 <hr />
 <span>
 <b>[扩展功能]</b><br />
-1. 进入里站专辑页面。<br />
-2. 点击浏览器地址栏，运行熊猫书签。<br />
-3. 下拉找到扩展面板，使用扩展功能。<br />
+进入里站专辑页面。<br />
+点击地址栏，运行熊猫书签。<br />
+下拉找到扩展面板，使用扩展功能。<br />
 </span>
 </div>
 <hr />
@@ -160,7 +157,7 @@ https访问：<a href="https://exhentai.org" target="_blank"><u><b>https://exhen
 当前IP浏览的图片过多被E站限制，可等待配额恢复或重启路由器更换IP。<br />
 </span>
 <hr />
-<a href="https://github.com/ehpanda/panda.feedback/issues" target="_blank"><b>Feedback</b></a>
+<a href="https://github.com/ehpanda/expanda.org/issues" target="_blank"><b>GitHub</b></a>
 </td>
 </tr>
 </table>

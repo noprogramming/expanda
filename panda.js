@@ -136,6 +136,7 @@ if(Object.keys(panda_sniff).length){
 file.alt=info.adds;
 var img=new Image();
 img.src=info.full;
+img.onerror=function(){if(panda_sniff[numb]){delete panda_sniff[numb];};if(!Object.keys(panda_sniff).length){panda_recookie();};};
 img.onload=function(){file.src=img.src;if(panda_sniff[numb]){delete panda_sniff[numb];};if(!Object.keys(panda_sniff).length){panda_recookie();};};
 }
 else{

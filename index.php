@@ -1,5 +1,5 @@
 <?php
-$web=substr($_SERVER['HTTP_HOST'].dirname($_SERVER['REQUEST_URI']),0,-1);
+$web=$_SERVER['HTTP_HOST'].dirname($_SERVER['REQUEST_URI']);
 if(preg_match('/\/(?:(\w+)\.)?panda.user.js$/i',$_SERVER['REQUEST_URI'],$key)){
 header('Content-Type:application/javascript;');
 echo '
@@ -9,13 +9,13 @@ echo '
 // @description  zh-cn/
 // @license      WTFPL
 // @version      16
-// @match        '.$web.'/*
+// @match        '.$web.'*
 // @match        exhentai.org/*
 // @grant        none
 // ==/UserScript==
 (function(){
 \'use strict\';
-if(window.location.hostname==\'exhentai.org\'){var a=document.createElement(\'script\');a.src=\'//'.$web.'/panda.js?\'+parseInt(Date.parse(new Date())/600000);'.(empty($key['1'])?'':'a.setAttribute(\'exkey\',\''.$key['1'].'\');').'document.body.appendChild(a);}
+if(window.location.hostname==\'exhentai.org\'){var a=document.createElement(\'script\');a.src=\'//'.$web.'panda.js?\'+parseInt(Date.parse(new Date())/600000);'.(empty($key['1'])?'':'a.setAttribute(\'exkey\',\''.$key['1'].'\');').'document.body.appendChild(a);}
 else if(document.getElementById(\'goto\')){document.getElementById(\'goto\').style.display=\'\';};
 })();
 ';

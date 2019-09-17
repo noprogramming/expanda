@@ -84,6 +84,7 @@ var info={};
 info.numb=numb;
 info.hash=hash;
 info.show=html.match(/id="img" src="(.*?)"/)[1];
+info.show=info.show.substr(0,info.show.lastIndexOf('/'));
 info.full=html.match(/href="(https:\/\/exhentai\.org\/fullimg.php(.*?))"/)?html.match(/href="(https:\/\/exhentai\.org\/fullimg.php(.*?))"/)[1].replace(/\&amp;/g,'\&'):info.show;
 info.adds=adds+'&nl='+html.match(/onclick="return nl\(\'(.*?)\'\)"/)[1];
 exec(info);

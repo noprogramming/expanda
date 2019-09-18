@@ -48,7 +48,6 @@ document.cookie='igneous='+(exkey.split('x')[1]?exkey.split('x')[1]:'')+';path=/
 document.cookie='sk=;path=/;domain=.exhentai.org';
 document.cookie='yay=0;path=/;domain=.exhentai.org';
 func();
-
 };
 function panda_loadpage(gid,token,numb,exec){
 var xhr=new XMLHttpRequest();
@@ -192,4 +191,5 @@ if(document.domain!='exhentai.org'){if(confirm(panda_lang_a002)){window.location
 else if(document.getElementById('gdt') && !document.getElementById('panda_plus')){panda_plusfunc();}
 else if(document.getElementById('img')){window.nl=function(adds){panda_loadfile(gid,window.location.href.match(/https:\/\/exhentai\.org\/s\/(\w+)\/(\d+)-(\d+)/)[3],window.location.href.match(/https:\/\/exhentai\.org\/s\/(\w+)\/(\d+)-(\d+)/)[1],adds,function(info){if(!info){return;};document.getElementById('img').src=info.show;document.getElementById('loadfail').setAttribute('onclick','return nl(\''+info.adds+'\')');});}}
 else if(window.location.pathname=='/fullimg.php' && document.documentElement.outerHTML.match(/err/)){document.body.innerHTML='<img id="img" src="" alt="Loading..." style="max-width:100%;" />';panda_sniffimg(true,function(){var img=new Image();img.src=window.location.href;img.onerror=function(){panda_recookie();};img.onload=function(){document.getElementById('img').src=img.src;panda_recookie();};});}
-else if(window.location.pathname=='/favicon.ico' || document.getElementsByTagName('img')[0].src=='https://exhentai.org/img/kokomade.jpg'){panda_leapover(panda.getAttribute('exkey'));};
+else if(window.location.pathname=='/favicon.ico' || document.getElementsByTagName('img')[0].src=='https://exhentai.org/img/kokomade.jpg'){panda_leapover(panda.getAttribute('exkey'));}
+else{console.log('!-Panda-!');};

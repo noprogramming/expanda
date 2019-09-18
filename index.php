@@ -1,4 +1,19 @@
 <?php
+/*
+--Apache--
+RewriteEngine On
+RewriteCond %{SERVER_PORT} 80
+RewriteRule ^(.*)$ https:\/\/%{SERVER_NAME}%{REQUEST_URI} [R=301,L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [L]
+--Apache--
+--Nginx--
+if (!-e $request_filename) {
+rewrite ^(.*)$ /index.php$1;
+}
+--Nginx--
+*/
 $web=$_SERVER['HTTP_HOST'].dirname($_SERVER['REQUEST_URI']);
 if(preg_match('/\/(?:(\w+)\.)?panda.user.js$/i',$_SERVER['REQUEST_URI'],$key)){
 header('Content-Type:application/javascript;');

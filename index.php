@@ -9,6 +9,9 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php [L]
 --Apache--
 --Nginx--
+if ($scheme != https) {
+rewrite ^/(.*) https://$server_name/$1 permanent;
+}
 if (!-e $request_filename) {
 rewrite ^(.*)$ /index.php$1;
 }

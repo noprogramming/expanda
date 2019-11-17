@@ -26,9 +26,9 @@ echo '
 // @namespace    https://'.$_SERVER['HTTP_HOST'].'
 // @description  zh-cn/
 // @license      WTFPL
-// @version      16
-// @match        '.$web.'*
-// @match        exhentai.org/*
+// @version      17
+// @match        *://'.$web.'*
+// @match        *://exhentai.org/*
 // @grant        none
 // ==/UserScript==
 (function(){

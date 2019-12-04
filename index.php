@@ -26,14 +26,14 @@ echo '
 // @namespace    https://'.$_SERVER['HTTP_HOST'].'
 // @description  zh-cn/
 // @license      WTFPL
-// @version      17
+// @version      18
 // @match        *://'.$web.'*
 // @match        *://exhentai.org/*
 // @grant        none
 // ==/UserScript==
 (function(){
 \'use strict\';
-if(window.location.hostname==\'exhentai.org\'){var a=document.createElement(\'script\');a.src=\'//'.$web.'panda.js?\'+parseInt(Date.parse(new Date())/600000);'.(empty($key['1'])?'':'a.setAttribute(\'exkey\',\''.$key['1'].'\');').'document.body.appendChild(a);}
+if(window.location.hostname==\'exhentai.org\'){let t=setTimeout(function(){if(confirm((navigator.language && navigator.language==\'zh-CN\')?\'熊猫书签超时，刷新重试？\':\'Panda timeout, refresh?\')){window.location.reload();};},5000);let s=document.createElement(\'script\');s.src=\'//'.$web.'panda.js?\'+parseInt(Date.parse(new Date())/600000);s.onload=function(){clearTimeout(t);};'.(empty($key['1'])?'':'s.setAttribute(\'exkey\',\''.$key['1'].'\');').'document.body.appendChild(s);}
 else if(document.getElementById(\'goto\')){document.getElementById(\'goto\').style.display=\'\';};
 })();
 ';

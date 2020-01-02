@@ -178,6 +178,7 @@ gtbn.parentNode.insertBefore(code,gtbn);
 };
 var panda=document.getElementsByTagName('script')[document.getElementsByTagName('script').length-1];
 var panda_zhcn=(navigator.language && navigator.language=='zh-CN')?true:false;
+var panda_lang_0=panda_zhcn?'VPN造成无法访问':'VPN cause blocked';
 var panda_lang_1=panda_zhcn?'网络错误，是否重试？':'Network error, retry?';
 var panda_lang_2=panda_zhcn?'进入里站？':'Go to exhentai?';
 var panda_lang_3=panda_zhcn?'输入有误':'Incorrect input';
@@ -192,9 +193,11 @@ var panda_lang_11=panda_zhcn?'请确认已登录，否则无法加载原图':'If
 var panda_width=document.cookie.match(/panda_width=[\d]+/)?document.cookie.match(/panda_width=(\d+)/)[1]:800;
 var panda_sniff={};
 window.addEventListener('beforeunload',function(){panda_recookie();});
-if(['exhentai.org','e-hentai.org'].indexOf(document.domain)<0){if(confirm(panda_lang_2)){window.location.href='https://exhentai.org/favicon.ico';}}
+console.log(document.getElementsByTagName('img'));
+if(!document.domain.match(/^e[x|-]hentai\.org$/)){if(confirm(panda_lang_2)){window.location.href='https://exhentai.org/favicon.ico';}}
 else if(document.getElementById('gdt') && !document.getElementById('panda_plus')){panda_plusfunc();}
 else if(document.getElementById('img')){window.nl=function(adds){panda_loadfile(gid,window.location.href.match(/https:\/\/e[x|-]hentai\.org\/s\/(\w+)\/(\d+)-(\d+)/)[3],window.location.href.match(/https:\/\/e[x|-]hentai\.org\/s\/(\w+)\/(\d+)-(\d+)/)[1],adds,function(info){if(!info){return;};document.getElementById('img').src=info.show;document.getElementById('loadfail').setAttribute('onclick','return nl(\''+info.adds+'\')');});}}
 else if(window.location.pathname=='/fullimg.php' && document.documentElement.outerHTML.match(/err/)){document.body.innerHTML='<img id="img" src="" alt="Loading..." style="max-width:100%;" />';panda_sniffimg(true,function(){var img=new Image();img.src=window.location.href;img.onerror=function(){panda_recookie();};img.onload=function(){document.getElementById('img').src=img.src;panda_recookie();};});}
-else if(window.location.pathname=='/favicon.ico' || document.getElementsByTagName('img')[0].src=='https://exhentai.org/img/kokomade.jpg'){panda_leapover(panda.getAttribute('exkey'));}
+else if(window.location.pathname=='/favicon.ico' || (document.getElementsByTagName('img').length && document.getElementsByTagName('img')[0].src=='https://exhentai.org/img/kokomade.jpg')){panda_leapover(panda.getAttribute('exkey'));}
+else if(!document.outerHTML){alert(panda_lang_0);}
 else{console.log('!-Panda-!');};

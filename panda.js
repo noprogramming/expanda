@@ -193,7 +193,6 @@ var panda_lang_11=panda_zhcn?'请确认已登录，否则无法加载原图':'If
 var panda_width=document.cookie.match(/panda_width=[\d]+/)?document.cookie.match(/panda_width=(\d+)/)[1]:800;
 var panda_sniff={};
 window.addEventListener('beforeunload',function(){panda_recookie();});
-console.log(document.getElementsByTagName('img'));
 if(!document.domain.match(/^e[x|-]hentai\.org$/)){if(confirm(panda_lang_2)){window.location.href='https://exhentai.org/favicon.ico';}}
 else if(document.getElementById('gdt') && !document.getElementById('panda_plus')){panda_plusfunc();}
 else if(document.getElementById('img')){window.nl=function(adds){panda_loadfile(gid,window.location.href.match(/https:\/\/e[x|-]hentai\.org\/s\/(\w+)\/(\d+)-(\d+)/)[3],window.location.href.match(/https:\/\/e[x|-]hentai\.org\/s\/(\w+)\/(\d+)-(\d+)/)[1],adds,function(info){if(!info){return;};document.getElementById('img').src=info.show;document.getElementById('loadfail').setAttribute('onclick','return nl(\''+info.adds+'\')');});}}

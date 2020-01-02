@@ -20,6 +20,7 @@ var xhr=new XMLHttpRequest();
 xhr.open('GET','https://exhentai.org',true);
 xhr.onerror=function(){if(confirm(panda_lang_1)){panda_leapover(exkey);};};
 xhr.onreadystatechange=function(){if(this.readyState===4 && this.status===200){
+if(!this.responseText){alert(panda_lang_0);return;};
 if(!this.responseText.match(/<link(.*?)exhentai(.*?)>/)){panda_exkeyset();return;};
 if(window.location.pathname=='/favicon.ico'){window.location.href='/';}
 else{window.location.reload();};
@@ -178,7 +179,7 @@ gtbn.parentNode.insertBefore(code,gtbn);
 };
 var panda=document.getElementsByTagName('script')[document.getElementsByTagName('script').length-1];
 var panda_zhcn=(navigator.language && navigator.language=='zh-CN')?true:false;
-var panda_lang_0=panda_zhcn?'VPN造成无法访问':'VPN cause blocked';
+var panda_lang_0=panda_zhcn?'IP遭遇白屏封锁':'IP blocked by white page';
 var panda_lang_1=panda_zhcn?'网络错误，是否重试？':'Network error, retry?';
 var panda_lang_2=panda_zhcn?'进入里站？':'Go to exhentai?';
 var panda_lang_3=panda_zhcn?'输入有误':'Incorrect input';

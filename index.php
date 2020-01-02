@@ -26,14 +26,25 @@ echo '
 // @namespace    https://'.$_SERVER['HTTP_HOST'].'
 // @description  zh-cn/
 // @license      WTFPL
-// @version      18
+// @version      19
 // @match        *://'.$web.'*
 // @match        *://exhentai.org/*
 // @grant        none
 // ==/UserScript==
 (function(){
 \'use strict\';
-if(window.location.hostname==\'exhentai.org\'){let t=setTimeout(function(){if(confirm((navigator.language && navigator.language==\'zh-CN\')?\'熊猫书签超时，刷新重试？\':\'Panda timeout, refresh?\')){window.location.reload();};},5000);let s=document.createElement(\'script\');s.src=\'//'.$web.'panda.js?\'+parseInt(Date.parse(new Date())/600000);s.onload=function(){clearTimeout(t);};'.(empty($key['1'])?'':'s.setAttribute(\'exkey\',\''.$key['1'].'\');').'document.body.appendChild(s);}
+let c=0;
+function panda_init(){
+if(c>=3){return;};c++;
+let t=setTimeout(function(){clearTimeout(t);panda_init();},5000);
+let s=document.createElement(\'script\');
+'.(empty($key['1'])?'':'s.setAttribute(\'exkey\',\''.$key['1'].'\');').'
+s.src=\'//'.$web.'panda.js?\'+parseInt(Date.parse(new Date())/600000)+c;
+s.onerror=function(){clearTimeout(t);panda_init();};
+s.onload=function(){clearTimeout(t);};
+document.body.appendChild(s);
+};
+if(window.location.hostname==\'exhentai.org\'){panda_init();}
 else if(document.getElementById(\'goto\')){document.getElementById(\'goto\').style.display=\'\';};
 })();
 ';

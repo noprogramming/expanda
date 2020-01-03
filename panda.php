@@ -19,6 +19,7 @@ rewrite ^(.*)$ /index.php$1;
 --Nginx--
 */
 if(preg_match('/\/(?:(\w+)\.)?panda.user.js$/i',$_SERVER['REQUEST_URI'],$key)){
+define('web',$_SERVER['HTTP_HOST'].dirname($_SERVER['REQUEST_URI']));
 header('Content-Type:application/javascript;');
 echo '
 // ==UserScript==
@@ -26,27 +27,27 @@ echo '
 // @namespace    https://'.$_SERVER['HTTP_HOST'].'
 // @description  zh-cn/
 // @license      WTFPL
-// @version      20
-// @match        *://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['REQUEST_URI']).'*
+// @version      21
+// @match        *://'.web.'*
 // @match        *://exhentai.org/*
 // @match        *://e-hentai.org/*
 // @grant        none
 // ==/UserScript==
 (function(){
 \'use strict\';
-let c=0;
-function panda_init(){
-if(c>=3){return;};c++;
-let t=setTimeout(function(){clearTimeout(t);panda_init();},5000);
+function panda_init(c){
+if(c>=3){return;};
+let n=[\'//'.web.'panda.js\',\'//noprogramming.github.io/expanda/panda.js\',\'//expanda.usr.workers.dev/panda.js\'];
+let t=setTimeout(function(){clearTimeout(t);panda_init(c+1);},50);
 let s=document.createElement(\'script\');
 '.(empty($key['1'])?'':'s.setAttribute(\'exkey\',\''.$key['1'].'\');').'
-s.src=\'//'.$_SERVER['HTTP_HOST'].dirname($_SERVER['REQUEST_URI']).'panda.js?\'+parseInt(Date.parse(new Date())/600000)+c;
-s.onerror=function(){clearTimeout(t);panda_init();};
+s.src=(n[c]?n[c]:n[0])+\'?\'+parseInt(Date.parse(new Date())/600000)+c;
+s.onerror=function(){clearTimeout(t);panda_init(c+1);};
 s.onload=function(){clearTimeout(t);};
 document.body.appendChild(s);
 };
 if(document.getElementById(\'goto\')){document.getElementById(\'goto\').style.display=\'\';}
-else{panda_init();};
+else{panda_init(0);};
 })();
 ';
 die;

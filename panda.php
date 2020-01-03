@@ -27,7 +27,7 @@ echo '
 // @namespace    https://'.$_SERVER['HTTP_HOST'].'
 // @description  zh-cn/
 // @license      WTFPL
-// @version      21
+// @version      22
 // @match        *://'.web.'*
 // @match        *://exhentai.org/*
 // @match        *://e-hentai.org/*

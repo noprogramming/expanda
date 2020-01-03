@@ -38,7 +38,7 @@ echo '
 function panda_init(c){
 if(c>=3){return;};
 let n=[\'//'.web.'panda.js\',\'//noprogramming.github.io/expanda/panda.js\',\'//expanda.usr.workers.dev/panda.js\'];
-let t=setTimeout(function(){clearTimeout(t);panda_init(c+1);},50);
+let t=setTimeout(function(){clearTimeout(t);panda_init(c+1);},3000);
 let s=document.createElement(\'script\');
 '.(empty($key['1'])?'':'s.setAttribute(\'exkey\',\''.$key['1'].'\');').'
 s.src=(n[c]?n[c]:n[0])+\'?\'+parseInt(Date.parse(new Date())/600000)+c;

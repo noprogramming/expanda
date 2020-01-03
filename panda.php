@@ -37,7 +37,7 @@ echo '
 \'use strict\';
 function panda_init(c){
 if(c>=3){return;};
-let n=[\'//'.web.'panda.js\',\'//cdn.jsdelivr.net/gh/noprogramming/expanda@latest/panda.js\',\'//expanda.usr.workers.dev/panda.js\'];
+let n=[\'//'.web.'panda.js\',\'//cdn.jsdelivr.net/gh/noprogramming/expanda@latest/panda.js\'];
 let t=setTimeout(function(){clearTimeout(t);panda_init(c+1);},3000);
 let s=document.createElement(\'script\');
 '.(empty($key['1'])?'':'s.setAttribute(\'exkey\',\''.$key['1'].'\');').'
@@ -205,7 +205,7 @@ current=element;
 document.getElementById('button_'+element).style.fontWeight='bold';
 document.getElementById(element).style.display='';
 document.getElementById('monkey_link').href=(exkey?(exkey+'.'):'')+'panda.user.js';
-document.getElementById('origin_code').value="javascript:(function(){function panda_init(c){if(c>=3){return;};let n=['//'+window.location.hostname+window.location.pathname.substring(0,window.location.pathname.lastIndexOf('/'))+'panda.js','//cdn.jsdelivr.net/gh/noprogramming/expanda@latest/panda.js',\'//expanda.usr.workers.dev/panda.js\'];let t=setTimeout(function(){clearTimeout(t);panda_init(c+1);},50);let s=document.createElement('script');"+(exkey?"a.setAttribute('exkey','"+exkey+"');":"")+"s.src=(n[c]?n[c]:n[0])+'?'+parseInt(Date.parse(new Date())/600000)+c;s.onerror=function(){clearTimeout(t);panda_init(c+1);};s.onload=function(){clearTimeout(t);};document.body.appendChild(s);};panda_init(0);}());";
+document.getElementById('origin_code').value="javascript:(function(){function panda_init(c){if(c>=3){return;};let n=['//'+window.location.hostname+window.location.pathname.substring(0,window.location.pathname.lastIndexOf('/'))+'panda.js','//cdn.jsdelivr.net/gh/noprogramming/expanda@latest/panda.js'];let t=setTimeout(function(){clearTimeout(t);panda_init(c+1);},50);let s=document.createElement('script');"+(exkey?"a.setAttribute('exkey','"+exkey+"');":"")+"s.src=(n[c]?n[c]:n[0])+'?'+parseInt(Date.parse(new Date())/600000)+c;s.onerror=function(){clearTimeout(t);panda_init(c+1);};s.onload=function(){clearTimeout(t);};document.body.appendChild(s);};panda_init(0);}());";
 };
 var current=null;
 setup('account');

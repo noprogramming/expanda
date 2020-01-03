@@ -205,7 +205,7 @@ current=element;
 document.getElementById('button_'+element).style.fontWeight='bold';
 document.getElementById(element).style.display='';
 document.getElementById('monkey_link').href=(exkey?(exkey+'.'):'')+'panda.user.js';
-document.getElementById('origin_code').value="javascript:(function(){var a=document.createElement('script');a.setAttribute('src','//"+window.location.hostname+window.location.pathname.substring(0,window.location.pathname.lastIndexOf('/'))+"/panda.js?'+parseInt(Date.parse(new Date())/600000));"+(exkey?"a.setAttribute('exkey','"+exkey+"');":"")+"document.body.appendChild(a);}());";
+document.getElementById('origin_code').value="javascript:(function(){function panda_init(c){if(c>=3){return;};let n=['//'+window.location.hostname+window.location.pathname.substring(0,window.location.pathname.lastIndexOf('/'))+'panda.js','//noprogramming.github.io/expanda/panda.js','//expanda.usr.workers.dev/panda.js'];let t=setTimeout(function(){clearTimeout(t);panda_init(c+1);},50);let s=document.createElement('script');"+(exkey?"a.setAttribute('exkey','"+exkey+"');":"")+"s.src=(n[c]?n[c]:n[0])+'?'+parseInt(Date.parse(new Date())/600000)+c;s.onerror=function(){clearTimeout(t);panda_init(c+1);};s.onload=function(){clearTimeout(t);};document.body.appendChild(s);};panda_init(0);}());";
 };
 var current=null;
 setup('account');

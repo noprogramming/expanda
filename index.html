@@ -152,7 +152,7 @@ document.getElementById(element).style.display='';
 document.getElementById('monkey_link').href=(exkey?(exkey+'.'):'')+'panda.user.js';
 if(element=='origin'){
 let xhr=new XMLHttpRequest();
-xhr.open('GET','panda.do',true);
+xhr.open('GET','config',true);
 xhr.onerror=function(e){console.log('network_error');};
 xhr.onreadystatechange=function(e){if(this.readyState===4 && this.status===200){
 let obj=JSON.parse(this.responseText);

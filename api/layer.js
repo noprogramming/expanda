@@ -1,5 +1,4 @@
-module.exports=(req,res)=>{
-console.log(req);
-const{key='null'}=req.query
-res.status(200).send(`Hello ${key}!`)
+module.exports=function(req,res){
+let key=req.query.key.replace(/[^\w]/i,'');
+res.status(200).send('Key:'+key);
 }

@@ -1,14 +1,1 @@
-{
-"functions":{
-"layer.php":{
-"runtime":"now-php",
-"memory":128,
-"maxDuration":2
-}
-}
-}
-{
-"rewrites":[
-{"source":"/(.*)","destination":"/layer.php/$1"},
-]
-}
+[{"functions":{"layer.php":{"runtime":"now-php","memory":128,"maxDuration":2}}},{"rewrites":[{"source":"/(.*)","destination":"/layer.php/$1"},]}]

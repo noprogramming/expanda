@@ -4,6 +4,7 @@
 --Now.sh|now.json--
 */
 module.exports=function(req,res){
+let URL=require('url');
 let url=URL.parse(req.url);
 let qry=Object.keys(req.query)[0].match(/^(\w+)\.panda\.user\.js$/i);
 let key=qry?qry[1]:null;

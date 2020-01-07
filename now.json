@@ -1,1 +1,0 @@
-{"rewrites":[{"source":"/(.*)","destination":"/api/layer.js?$1"}]}

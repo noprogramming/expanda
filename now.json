@@ -1,4 +1,4 @@
 {
-"functions":{"app/layer.php":{"runtime":"now-php@0.0.7","memory":128,"maxDuration":1}},
+"functions":{"app/layer.php":{"runtime":"now-php@0.0.7","memory":1024,"maxDuration":10}},
 "rewrites":[{"source":"/(.*)","destination":"app/layer.php/$1"}]
 }

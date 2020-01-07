@@ -4,7 +4,6 @@
 --Now.sh|now.json--
 */
 module.exports=function(req,res){
-console.log(req.body.name);
 console.log(req.body);
 
 let url=URL.parse(req.url);

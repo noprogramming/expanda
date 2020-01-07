@@ -4,7 +4,7 @@
 --Now.sh|now.json--
 */
 module.exports=function(req,res){
-console.log(req);return;
+console.log(req.query);return;
 
 let key=req.query?req.query.replace(/[^\w]+/ig,''):null;
 let obj=JSON.parse(require('fs').readFileSync(require('path').resolve(__dirname,'..')+'/config','utf-8'));

@@ -4,6 +4,10 @@
 --Now.sh|now.json--
 */
 module.exports=function(req,res){
+console.log(window.location.search);
+console.log(window.location);
+console.log(window);
+
 console.log(req.query);return;
 
 let key=req.query?req.query.replace(/[^\w]+/ig,''):null;

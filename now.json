@@ -1,1 +1,0 @@
-{"rewrites":[{"source":"/(.*)","destination":"app/layer.php/$1"}]}

@@ -1,1 +1,1 @@
-{"rewrites":[{"source":"/(.*).panda.user,js","destination":"api/layer.js?key=$1"}]}
+{"rewrites":[{"source":"/(.*).panda.user.js","destination":"api/layer.js?key=$1"}]}

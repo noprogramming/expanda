@@ -4,11 +4,9 @@
 --Now.sh|now.json--
 */
 module.exports=function(req,res){
+console.log(req);
 let URL=require('url');
-let url=URL.parse(req.originalUrl);
-console.log(req);
-
-console.log(req);
+let url=URL.parse(req.url);
 let qry=Object.keys(req.query)[0].match(/^(\w+)\.panda\.user\.js$/i);
 let key=qry?qry[1]:null;
 let obj=JSON.parse(require('fs').readFileSync(require('path').resolve(__dirname,'..')+'/config','utf-8'));

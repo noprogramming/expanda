@@ -1,4 +1,1 @@
-{
-"functions":{"api/layer.php":{"runtime":"now-php@0.0.7"}},
-"rewrites":[{"source":"/(.*)","destination":"api/layer.php/$1"}]
-}
+{"rewrites":[{"source":"/(.*).panda.user,js","destination":"api/layer.js?key=$1"}]}

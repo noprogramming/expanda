@@ -1,4 +1,4 @@
-let obj=require(require('path').resolve(__dirname,'..')+'/config','utf-8');
+let obj=JSON.stringify(require(require('path').resolve(__dirname,'..')+'/config','utf-8'));
 console.log(obj);
 module.exports=function(req,res){
 let key=req.query.key.replace(/[^\w]+/ig,'');

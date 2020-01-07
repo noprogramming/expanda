@@ -22,7 +22,6 @@ xhr.onerror=function(){if(confirm(panda_lang_1)){panda_leapover(exkey);};};
 xhr.timeout=5000;
 xhr.ontimeout=function(){if(confirm(panda_lang_1)){panda_leapover(exkey);};};
 xhr.onreadystatechange=function(){if(this.readyState===4 && this.status===200){
-if(!this.responseText){alert(panda_lang_0);return;};
 if(!this.responseText.match(/<link(.*?)exhentai(.*?)>/)){panda_exkeyset();return;};
 if(window.location.pathname=='/favicon.ico'){window.location.href='/';}
 else{window.location.reload();};
@@ -181,7 +180,6 @@ gtbn.parentNode.insertBefore(code,gtbn);
 };
 var panda=document.getElementsByTagName('script')[document.getElementsByTagName('script').length-1];
 var panda_zhcn=(navigator.language && navigator.language=='zh-CN')?true:false;
-var panda_lang_0=panda_zhcn?'IP遭遇白屏封锁':'IP blocked by white page';
 var panda_lang_1=panda_zhcn?'网络错误，是否重试？':'Network error, retry?';
 var panda_lang_2=panda_zhcn?'进入里站？':'Go to exhentai?';
 var panda_lang_3=panda_zhcn?'输入有误':'Incorrect input';
@@ -190,7 +188,7 @@ var panda_lang_5=panda_zhcn?'范围':'Range';
 var panda_lang_6=panda_zhcn?'宽度':'Width';
 var panda_lang_7=panda_zhcn?'原图':'Original';
 var panda_lang_8=panda_zhcn?'加载多少张图片？（留空读取至末尾）':'How many pictures to load? (Leave blank to end)';
-var panda_lang_9=panda_zhcn?'请输入新exkey：（留空使用公共账号）':'Account invalid, input new exkey: (Leave blank to use public account)';
+var panda_lang_9=panda_zhcn?'无权访问，请输入新exkey：（留空使用公共账号）':'Account invalid, input new exkey: (Leave blank to use public account)';
 var panda_lang_10=panda_zhcn?'嗅探模式将被开启（很慢）':'Sniff mode will be used (Slow)';
 var panda_lang_11=panda_zhcn?'请确认已登录，否则无法加载原图':'If you did not logged in, original pictures will not display';
 var panda_width=document.cookie.match(/panda_width=[\d]+/)?document.cookie.match(/panda_width=(\d+)/)[1]:800;

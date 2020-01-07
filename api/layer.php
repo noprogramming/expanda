@@ -17,10 +17,11 @@ rewrite ^(.*)$ /layer.php$1;
 }
 --Nginx--
 */
-if(preg_match('/\/(?:(\w+)\.)?panda.user.js$/i',$_SERVER['REQUEST_URI'],$key)){
-$obj=json_decode(file_get_contents('config'),true);
-$txt=str_replace(array('`func`','`cdn`','`ver`','`key`','`web`'),array($obj['func'],$obj['cdn'],$obj['ver'],(isset($key['1'])?'s.setAttribute(\'exkey\',\''.$key['1'].'\');':''),'https://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['REQUEST_URI'])),$obj['monkey']);
-header('Content-Type:application/javascript;');
-echo $txt;
-}
+
+$key=isset($_GET['key'])?$_GET['key']:'';
+echo $key;
+//$obj=json_decode(file_get_contents('config'),true);
+//$txt=str_replace(array('`func`','`cdn`','`ver`','`key`','`web`'),array($obj['func'],$obj['cdn'],$obj['ver'],(isset($key['1'])?'s.setAttribute(\'exkey\',\''.$key['1'].'\');':''),'https://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['REQUEST_URI'])),$obj['monkey']);
+//header('Content-Type:application/javascript;');
+//echo $txt;
 ?>

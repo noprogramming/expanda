@@ -193,7 +193,7 @@ var panda_lang_9=panda_zhcn?'到达边界':'Edge reached';
 var panda_width=document.cookie.match(/panda_width=[\d]+/)?document.cookie.match(/panda_width=(\d+)/)[1]:800;
 var panda_sniff={};
 window.addEventListener('beforeunload',function(){panda_recookie();});
-if(!document.domain.match(/^e[x|-]hentai\.org$/)){if(confirm('ExHentai.org?')){window.location.href='https://exhentai.org/favicon.ico';}}
+if(!document.domain.match(/^e[x|-]hentai\.org$/)){window.location.href='https://exhentai.org/favicon.ico';}
 else if(document.getElementById('gdt') && !document.getElementById('panda_plus')){panda_plusfunc();}
 else if(document.getElementById('img')){window.nl=function(adds){panda_loadfile(gid,window.location.href.match(/https:\/\/e[x|-]hentai\.org\/s\/(\w+)\/(\d+)-(\d+)/)[3],window.location.href.match(/https:\/\/e[x|-]hentai\.org\/s\/(\w+)\/(\d+)-(\d+)/)[1],adds,function(info){if(!info){return;};document.getElementById('img').src=info.show;document.getElementById('loadfail').setAttribute('onclick','return nl(\''+info.adds+'\')');});}}
 else if(window.location.pathname=='/fullimg.php' && document.documentElement.outerHTML.match(/err/)){document.body.innerHTML='<img id="img" src="" alt="Loading..." style="max-width:100%;" />';panda_sniffimg(true,function(){var img=new Image();img.src=window.location.href;img.onerror=function(){panda_recookie();};img.onload=function(){document.getElementById('img').src=img.src;panda_recookie();};});}

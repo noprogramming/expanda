@@ -6,8 +6,7 @@ return false;
 };
 function panda_exkeyset(){
 var exkey=prompt(panda_lang_1,panda.getAttribute('exkey')?panda.getAttribute('exkey'):'');
-if(!exkey && exkey!==''){return;};
-panda_leapover(exkey);
+if(exkey || exkey===''){panda_leapover(exkey);};
 };
 function panda_leapover(exkey){
 if(!exkey){exkey=exkey_public;};

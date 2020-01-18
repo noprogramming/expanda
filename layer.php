@@ -3,7 +3,7 @@
 --Apache|.htaccess--
 RewriteEngine On
 RewriteCond %{SERVER_PORT} 80
-RewriteRule ^(.*)$ https:\/\/%{SERVER_NAME}\/%{REQUEST_URI} [R=301,L]
+RewriteRule ^(.*)$ https:\/\/%{SERVER_NAME}%{REQUEST_URI} [R=301,L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ /layer.php?$1 [L]

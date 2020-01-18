@@ -6,14 +6,14 @@ RewriteCond %{SERVER_PORT} 80
 RewriteRule ^(.*)$ https:\/\/%{SERVER_NAME}%{REQUEST_URI} [R=301,L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ /layer.php?$1 [L]
+RewriteRule ^(.*)$ /layer.php$1 [L]
 --Apache|.htaccess--
 --Nginx|host.conf>server--
 if ($scheme != https) {
-rewrite ^/(.*)$ https://$server_name/$1 permanent;
+rewrite ^(.*)$ https://$server_name$1 permanent;
 }
 if (!-e $request_filename) {
-rewrite ^/(.*)$ /layer.php?$1;
+rewrite ^(.*)$ /layer.php$1;
 }
 --Nginx|host.conf>server--
 */

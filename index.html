@@ -158,7 +158,7 @@ xhr.open('GET','config',true);
 xhr.onerror=function(e){console.log('network_error');};
 xhr.onreadystatechange=function(e){if(this.readyState===4 && this.status===200){
 let obj=JSON.parse(this.responseText);
-let txt=obj.origin.replace('`func`',obj.func).replace('`cdn`',obj.cdn).replace('`key`',(exkey?'s.setAttribute(\'exkey\',\''+exkey+'\');':'')).replace('`web`','https://'+window.location.hostname+window.location.pathname.replace(/[\/]+$/g,'/'));
+let txt=obj.origin.replace(/`func`/g,obj.func).replace(/`node`/g,obj.node).replace(/`key`/g,(exkey?'s.setAttribute(\'exkey\',\''+exkey+'\');':'')).replace(/`web`/g,obj.node[0]);
 document.getElementById('origin_code').value=txt;
 }};
 xhr.send();

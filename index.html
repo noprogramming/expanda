@@ -8,42 +8,30 @@
 <link rel="icon" href="data:," />
 <title>熊猫书签</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;max-width:100%;vertical-align:top;}
-body{margin:32px 0;font-family:Microsoft Yahei;font-size:14px;line-height:26px;word-wrap:break-word;word-break:break-all;}
+*{margin:0;padding:0;box-sizing:border-box;max-width:100%;}
+body{margin:auto;border-left:2px solid #666;border-right:2px solid #666;width:720px;font-size:14px;line-height:26px;word-wrap:break-word;word-break:break-all;}
+div{padding:2px 8px 4px 8px;}
 a{color:#000;text-decoration:none;}
-input{margin:8px 0 6px 0;padding:4px;width:100%;height:30px;}
+input{margin:6px 0;padding:4px;width:100%;height:30px;}
 input[type=button]{padding-top:2px;}
-.rack{margin:auto;width:720px;text-align:center;border-color:#666;}
-.rack td{padding:6px 0;width:50%;border-color:#666;}
-.rack hr{margin:6px 0;border-color:#666;}
-.rack span{display:block;padding:0 8px 2px 8px;text-align:left;}
+#expanda{border-top:2px solid #666;display:none;}
 </style>
 </head>
 <body>
-<table border="1" cellspacing="0" class="rack">
-<tr>
-<td colspan="2" id="expanda" style="display:none;">
-<a href="https://exhentai.org/favicon.ico">进入里站</a>
-</td>
-</tr>
-<tr>
-<td colspan="2" id="title">...</td>
-</tr>
-<tr>
-<td colspan="1"><a id="button_monkey" href="javascript:;" onclick="setup('monkey');">油猴 PC Android</a></td>
-<td colspan="1"><a id="button_origin" href="javascript:;" onclick="setup('origin');">传统 iOS</a></td>
-</tr>
-<tr>
-<td colspan="2">
-<div id="account">
-<span>
+<div id="expanda"><a href="https://exhentai.org/favicon.ico"><b>进入里站&nbsp;&#x2764;&#xFE0E;</b></a></div>
+<hr />
+<div id="title">...</div><hr />
+<div><a id="button_monkey" href="javascript:;" onclick="setup('monkey');">油猴 PC Android</a></div><hr />
+<div><a id="button_origin" href="javascript:;" onclick="setup('origin');">传统 iOS</a></div><hr />
+<span id="account">
+<div>
 <b>[密钥绑定]</b><br />
-如果没有密钥，可按流程注册，或留空使用公共书签。<br />
+可留空使用公共书签。<br />
 <input id="exkey" placeholder="exkey" /><br />
 <input type="button" value="确定" onclick="var exkey=document.getElementById('exkey').value;if(check(exkey)){window.location.hash=exkey;setup(current);alert('绑定成功');}else{alert('格式错误');};" /><br />
-</span>
+</div>
 <hr />
-<span>
+<div>
 <b>[账号注册]</b><br />
 注册地址：<a href="https://forums.e-hentai.org/?act=Reg" target="_blank"><u>https://forums.e-hentai.org/?act=Reg</u></a><br />
 中国大陆无法访问，需挂载拥有<b>私人IP</b>的<b>欧美V:P!И</b>，不能多人共用同IP。<br />
@@ -52,9 +40,9 @@ input[type=button]{padding-top:2px;}
 注册完成等待一周左右时间，账号应该就能获得里区权限，参照流程登录：<br />
 挂载<b>欧美V:P!И</b>，清空<b>浏览器COOKIE</b>，先<a href="https://e-hentai.org/bounce_login.php" target="_blank"><u><b>登录表站</b></u></a>，再<a href="https://exhentai.org" target="_blank"><u><b>访问里站</b></u></a>。<br />
 如果还出现熊猫，多等一周换个欧美V:P!И登录，再不行就是凉了。<br />
-</span>
+</div>
 <hr />
-<span>
+<div>
 <b>[密钥提取]</b><br />
 示例格式：aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa12345x1e2d3c<br />
 <b>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</b>是<b>ipb_pass_hash</b>。<br />
@@ -67,52 +55,52 @@ input[type=button]{padding-top:2px;}
 [Firefox] Storage-Cookies-exhentai.org<br />
 复制<b>ipb_pass_hash</b>、<b>ipb_member_id</b>、<b>igneous</b>三个变量。<br />
 按照格式规范组合成exkey，把这串密钥保存好，以后就可以用了。<br />
-</span>
 </div>
-<div id="monkey" style="display:none;">
-<span>
+</span>
+<span id="monkey" style="display:none;">
+<div>
 <b>[安装插件]</b><br />
-请根据您的浏览器类型，安装油猴插件：<br />
+根据浏览器安装油猴插件：<br />
 <a href="https://www.softpedia.com/get/Internet/Internet-Applications-Addons/Chrome-Extensions/Tampermonkey.shtml#download" target="_blank"><u><b>Chrome</b></u></a><br />
 <a href="https://addons.mozilla.org/firefox/addon/tampermonkey/" target="_blank"><u><b>Firefox</b></u></a><br />
 <a href="https://www.microsoft.com/store/apps/9NBLGGH5162S" target="_blank"><u><b>Edge</b></u></a><br />
 没有以上浏览器请安装<a href="https://www.mozilla.org/firefox/" target="_blank"><u>Firefox</u></a>，iOS请用传统书签。<br />
-</span>
+</div>
 <hr />
-<span>
+<div>
 <b>[添加脚本]</b><br />
-为油猴插件添加熊猫书签脚本：<br />
+为油猴添加熊猫书签脚本：<br />
 <a id="monkey_link" target="_blank"><u><b>点此下载安装</b></u></a><br />
-</span>
+</div>
 <hr />
-<span>
+<div>
 <b>[解锁里站]</b><br />
 访问本页面，点击顶部“进入里站”。<br />
-</span>
 </div>
-<div id="origin" style="display:none;">
-<span>
-<b>[复制代码]</b><br />
-全选并拷贝下面的代码：<br />
-<input id="origin_code" onclick="this.select();this.setSelectionRange(0,99999);" placeholder="生成中..." /><br />
 </span>
+<span id="origin" style="display:none;">
+<div>
+<b>[复制代码]</b><br />
+全选拷贝下面的代码：<br />
+<input id="origin_code" onclick="this.select();this.setSelectionRange(0,99999);" placeholder="生成中..." /><br />
+</div>
 <hr />
-<span>
+<div>
 <b>[创建书签]</b><br />
 把本页添加至书签。<br />
 点击浏览器地址栏。<br />
 找到刚才添加的书签，长按，编辑。<br />
 使用刚才复制的代码，替换原有地址。<br />
-</span>
+</div>
 <hr />
-<span>
+<div>
 <b>[解锁里站]</b><br />
 点击地址栏，运行熊猫书签。<br />
 跳转图标页，再次运行熊猫书签。<br />
-</span>
 </div>
+</span>
 <hr />
-<span>
+<div>
 <b>[常见问题]</b><br />
 这里收集了一些使用E站时常见的错误。<br />
 <b>网络封锁：链接被重置</b><br />
@@ -121,16 +109,16 @@ input[type=button]{padding-top:2px;}
 地域拦截或账号失效，请尝试断开V:P!И访问。<br />
 <b>流量超限：509 Bandwidth Limit Exceeded</b><br />
 浏览了过多图片，请等待配额恢复或更换IP。<br />
-</span>
+</div>
 <hr />
+<div>
 <b>
 <a href="https://github.com/noprogramming/expanda/issues" target="_blank">GitHub</a>
 +
 <a href="https://zeit.co" target="_blank">ZEIT</a>
 </b>
-</td>
-</tr>
-</table>
+</div>
+<hr />
 <script>
 function check(exkey){
 if(exkey.length<36){return false;};

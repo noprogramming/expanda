@@ -9,7 +9,7 @@
 <title>熊猫书签</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;max-width:100%;vertical-align:top;}
-body{margin:16px auto;width:720px;border:1px solid #666;font-size:14px;line-height:26px;word-wrap:break-word;word-break:break-all;}
+body{margin:32px auto;width:720px;border:1px solid #666;font-size:14px;line-height:26px;word-wrap:break-word;word-break:break-all;}
 a{color:#000;text-decoration:none;}
 input{margin:6px 0;padding:4px;width:100%;height:30px;}
 input[type=button]{padding-top:2px;}
@@ -24,15 +24,14 @@ div,.chart a{padding:2px 8px 4px 8px;border:1px solid #666;}
 <div id="expanda" style="display:none;"><a href="https://exhentai.org/favicon.ico"><b>进入里站</b></a></div>
 <div class="chart">
 <a id="button_monkey" href="javascript:;" onclick="setup('monkey');">油猴</a>
-<a id="button_account" href="javascript:;">...</a>
+<a id="button_signup" href="javascript:;" onclick="setup('signup');">熊猫书签</a>
 <a id="button_origin" href="javascript:;" onclick="setup('origin');">传统</a>
 </div>
-<span id="account">
+<span id="signup">
 <div>
 <b>[密钥绑定]</b><br />
-可留空使用公共书签。<br />
-<input id="exkey" placeholder="exkey" /><br />
-<input type="button" value="确定" onclick="var exkey=document.getElementById('exkey').value;if(check(exkey)){window.location.hash=exkey;setup(current);alert('绑定成功');}else{alert('格式错误');};" /><br />
+留空使用公共书签：<br />
+<input id="exkey" placeholder="exkey" oninput="check(this.value);" /><br />
 </div>
 <div>
 <b>[账号注册]</b><br />
@@ -82,7 +81,7 @@ iOS系统只能使用<a href="javascript:;" onclick="setup('origin');"><u><b>传
 <span id="origin" style="display:none;">
 <div>
 <b>[复制代码]</b><br />
-全选拷贝下面的代码：<br />
+全选拷贝下列代码：<br />
 <input id="origin_code" onclick="this.select();this.setSelectionRange(0,99999);" placeholder="生成中..." /><br />
 </div>
 <div>
@@ -115,23 +114,18 @@ iOS系统只能使用<a href="javascript:;" onclick="setup('origin');"><u><b>传
 </div>
 <script>
 function check(exkey){
-if(exkey.length<36){return false;};
-if(!/^[\dA-F]{32}$/i.test(exkey.split('x')[0].substr(0,32))){return false;};
-if(!Number.isInteger(parseInt(exkey.split('x')[0].substr(32)))){return false;};
-if(exkey.split('x')[1] && !/^[\dA-F]+$/i.test(exkey.split('x')[1])){return false;};
-return true;
+if(exkey.length<36 || !/^[\dA-F]{32}$/i.test(exkey.split('x')[0].substr(0,32)) || !Number.isInteger(parseInt(exkey.split('x')[0].substr(32))) || (exkey.split('x')[1] && !/^[\dA-F]+$/i.test(exkey.split('x')[1]))){
+document.getElementById('button_signup').style.color='';
+window.location.hash='';
+return false;
+};
+document.getElementById('button_signup').style.color='#228B22';
+window.location.hash=exkey;
+return exkey;
 };
 function setup(element){
-let exkey=window.location.hash?window.location.hash.substr(1):'';
-if(check(exkey)){
-document.getElementById('button_account').setAttribute('onclick','if(confirm(\'解除绑定？\')){window.location.hash=\'\';setup(current);};');
-document.getElementById('button_account').innerHTML=exkey;
-}
-else{
-exkey='';
-document.getElementById('button_account').setAttribute('onclick','setup(\'account\');');
-document.getElementById('button_account').innerHTML='熊猫书签';
-};
+let exkey=check(window.location.hash?window.location.hash.substr(1):'');
+if(exkey){document.getElementById('exkey').value=exkey;};
 if(current && current!=element){
 document.getElementById('button_'+current).style.fontWeight='';
 document.getElementById(current).style.display='none';
@@ -153,7 +147,7 @@ xhr.send();
 };
 };
 let current=null;
-setup('account');
+setup('signup');
 </script>
 </body>
 </html>

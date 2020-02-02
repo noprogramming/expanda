@@ -10,19 +10,19 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;max-width:100%;vertical-align:top;}
 body{margin:16px auto;width:720px;border:1px solid #666;font-size:14px;line-height:26px;word-wrap:break-word;word-break:break-all;}
-div{padding:2px 8px 4px 8px;border:1px solid #666;}
 a{color:#000;text-decoration:none;}
 input{margin:6px 0;padding:4px;width:100%;height:30px;}
 input[type=button]{padding-top:2px;}
-#title{padding:0;font-size:0;line-height:26px;text-align:center;}
-#title a{display:inline-block;padding:2px 8px 4px 8px;width:calc(100% / 3);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:14px;}
-#expanda,#bottom{text-align:center;}
+#expanda{text-align:center;}
 #expanda a{color:#CE0000;}
+.chart{padding:0;font-size:0;line-height:26px;text-align:center;border:0;}
+.chart a{display:inline-block;width:calc(100% / 3);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:14px;}
+div,.chart a{padding:2px 8px 4px 8px;border:1px solid #666;}
 </style>
 </head>
 <body>
 <div id="expanda" style="display:none;"><a href="https://exhentai.org/favicon.ico"><b>进入里站</b></a></div>
-<div id="title">
+<div class="chart">
 <a id="button_monkey" href="javascript:;" onclick="setup('monkey');">油猴</a>
 <a id="button_account" href="javascript:;">...</a>
 <a id="button_origin" href="javascript:;" onclick="setup('origin');">传统</a>
@@ -108,12 +108,10 @@ iOS系统只能使用<a href="javascript:;" onclick="setup('origin');"><u><b>传
 <b>流量超限：509 Bandwidth Limit Exceeded</b><br />
 浏览了过多图片，请等待配额恢复或更换IP。<br />
 </div>
-<div id="bottom">
-<b>
+<div class="chart">
 <a href="https://github.com/noprogramming/expanda/issues" target="_blank">GitHub</a>
-+
+<a href="javascript:;" onclick="alert('暂未集成');">竖屏阅读</a>
 <a href="https://zeit.co/" target="_blank">ZEIT</a>
-</b>
 </div>
 <script>
 function check(exkey){

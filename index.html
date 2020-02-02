@@ -8,19 +8,25 @@
 <link rel="icon" href="data:," />
 <title>熊猫书签</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;max-width:100%;}
+*{margin:0;padding:0;box-sizing:border-box;max-width:100%;vertical-align:top;}
 body{margin:auto;width:720px;border:1px solid #666;font-size:14px;line-height:26px;word-wrap:break-word;word-break:break-all;}
 div{padding:2px 8px 4px 8px;border:1px solid #666;}
 a{color:#000;text-decoration:none;}
 input{margin:6px 0;padding:4px;width:100%;height:30px;}
 input[type=button]{padding-top:2px;}
+#title{padding:0;font-size:0;line-height:26px;text-align:center;}
+#title a{display:inline-block;padding:2px 8px 4px 8px;width:calc(100% / 3);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:14px;}
+#expanda,#bottom{text-align:center;}
+#expanda a{color:#CE0000;}
 </style>
 </head>
 <body>
-<div id="expanda" style="display:none;"><a href="https://exhentai.org/favicon.ico"><b>进入里站&nbsp;&#x2764;&#xFE0E;</b></a></div>
-<div id="title">...</div>
-<div><a id="button_monkey" href="javascript:;" onclick="setup('monkey');">油猴 PC Android</a></div>
-<div><a id="button_origin" href="javascript:;" onclick="setup('origin');">传统 iOS</a></div>
+<div id="expanda" style="display:;"><a href="https://exhentai.org/favicon.ico"><b>进入里站</b></a></div>
+<div id="title">
+<a id="button_monkey" href="javascript:;" onclick="setup('monkey');">油猴</a>
+<a id="button_account" href="javascript:;">...</a>
+<a id="button_origin" href="javascript:;" onclick="setup('origin');">传统</a>
+</div>
 <span id="account">
 <div>
 <b>[密钥绑定]</b><br />
@@ -60,7 +66,8 @@ input[type=button]{padding-top:2px;}
 <a href="https://www.softpedia.com/get/Internet/Internet-Applications-Addons/Chrome-Extensions/Tampermonkey.shtml#download" target="_blank"><u><b>Chrome</b></u></a><br />
 <a href="https://addons.mozilla.org/firefox/addon/tampermonkey/" target="_blank"><u><b>Firefox</b></u></a><br />
 <a href="https://www.microsoft.com/store/apps/9NBLGGH5162S" target="_blank"><u><b>Edge</b></u></a><br />
-没有以上浏览器请安装<a href="https://www.mozilla.org/firefox/" target="_blank"><u>Firefox</u></a>，iOS请用传统书签。<br />
+若没有上述请安装<a href="https://www.mozilla.org/firefox/" target="_blank"><u><b>Firefox</b></u></a>，<br />
+iOS系统只能使用<a href="javascript:;" onclick="setup('origin');"><u><b>传统书签</b></u></a>。<br />
 </div>
 <div>
 <b>[添加脚本]</b><br />
@@ -101,7 +108,7 @@ input[type=button]{padding-top:2px;}
 <b>流量超限：509 Bandwidth Limit Exceeded</b><br />
 浏览了过多图片，请等待配额恢复或更换IP。<br />
 </div>
-<div>
+<div id="bottom">
 <b>
 <a href="https://github.com/noprogramming/expanda/issues" target="_blank">GitHub</a>
 +
@@ -118,8 +125,15 @@ return true;
 };
 function setup(element){
 let exkey=window.location.hash?window.location.hash.substr(1):'';
-if(check(exkey)){document.getElementById('title').innerHTML='<a id="button_account" href="javascript:;" onclick="if(confirm(\'解除绑定？\')){window.location.hash=\'\';setup(current);};">'+exkey+'</a>';}
-else{exkey='';document.getElementById('title').innerHTML='<a id="button_account" href="javascript:;" onclick="setup(\'account\');">熊猫书签</a>';};
+if(check(exkey)){
+document.getElementById('button_account').setAttribute('onclick','if(confirm(\'解除绑定？\')){window.location.hash=\'\';setup(current);};');
+document.getElementById('button_account').innerHTML=exkey;
+}
+else{
+exkey='';
+document.getElementById('button_account').setAttribute('onclick','setup(\'account\');');
+document.getElementById('button_account').innerHTML='熊猫书签';
+};
 if(current && current!=element){
 document.getElementById('button_'+current).style.fontWeight='';
 document.getElementById(current).style.display='none';

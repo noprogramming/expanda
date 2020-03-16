@@ -125,7 +125,7 @@ window.location.hash=exkey;
 return exkey;
 };
 function setup(element){
-let exkey=check(window.location.hash?window.location.hash.substr(1):'');
+var exkey=check(window.location.hash?window.location.hash.substr(1):'');
 if(exkey){document.getElementById('exkey').value=exkey;};
 if(current && current!=element){
 document.getElementById('button_'+current).style.fontWeight='';
@@ -136,18 +136,18 @@ document.getElementById('button_'+element).style.fontWeight='bold';
 document.getElementById(element).style.display='';
 document.getElementById('monkey_link').href=(exkey?(exkey+'.'):'')+'panda.user.js';
 if(element=='origin'){
-let xhr=new XMLHttpRequest();
+var xhr=new XMLHttpRequest();
 xhr.open('GET','config?'+parseInt(Date.parse(new Date())/60000),true);
 xhr.onerror=function(e){console.log('network_error');};
 xhr.onreadystatechange=function(e){if(this.readyState===4 && this.status===200){
-let obj=JSON.parse(this.responseText);
-let txt=obj.origin.replace(/`func`/g,obj.func).replace(/`node`/g,obj.node).replace(/`key`/g,(exkey?'s.setAttribute(\'exkey\',\''+exkey+'\');':'')).replace(/`web`/g,obj.node[0]);
+var obj=JSON.parse(this.responseText);
+var txt=obj.origin.replace(/`func`/g,obj.func).replace(/`node`/g,obj.node).replace(/`key`/g,(exkey?'s.setAttribute(\'exkey\',\''+exkey+'\');':'')).replace(/`web`/g,obj.node[0]);
 document.getElementById('origin_code').value=txt;
 }};
 xhr.send();
 };
 };
-let current=null;
+var current=null;
 setup('signup');
 </script>
 </body>
